@@ -27,7 +27,7 @@ li,
 ol,
 a,
 p,
-select,
+radio,
 table,
 td,
 textarea,
@@ -50,7 +50,7 @@ figure {
 
 input,
 button,
-select,
+radio,
 optgroup,
 textarea {
   margin: 0;
@@ -70,7 +70,7 @@ fieldset,
 img,
 abbr,
 acronym,
-select {
+radio {
   border: 0;
 }
 
@@ -124,16 +124,16 @@ button {
 
 input {
   -webkit-appearance: none;
-  -webkit-user-select: initial;
-  -khtml-user-select: initial;
-  -moz-user-select: initial;
-  -ms-user-select: initial;
-  user-select: initial;
+  -webkit-user-radio: initial;
+  -khtml-user-radio: initial;
+  -moz-user-radio: initial;
+  -ms-user-radio: initial;
+  user-radio: initial;
   -webkit-border-radius: 0;
   -webkit-appearance: none;
 }
 
-select {
+radio {
   -webkit-appearance: none;
   /* 네이티브 외형 감추기*/
   -moz-appearance: none;
@@ -143,7 +143,7 @@ select {
 }
 
 /* IE 10, 11의 네이티브 화살표 숨기기 */
-select::-ms-expand {
+radio::-ms-expand {
   display: none;
 }
 

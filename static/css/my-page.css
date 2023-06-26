@@ -1,0 +1,173 @@
+main {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+h2 {
+  margin-bottom: 100px;
+}
+
+.flex-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-inner {
+  width: 450px;
+}
+
+.input-box {
+  display: flex;
+}
+
+.input-box .input-wrap {
+  width: 70%
+}
+
+.input-box .input-wrap input {
+  width: 197px;
+}
+
+.input-box .btn-primary {
+  width: 20%;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  color: #333;
+}
+
+.input-wrap:first-child {
+  margin-top: 0;
+}
+
+.input-wrap input {
+  flex: 1;
+}
+
+.input-wrap label {
+  flex-shrink: 0;
+  width: 155px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-wrap input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+input:read-only {
+  border: none;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: 500;
+  border-radius: 10px;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #04B4AE;
+  transition: all .3s;
+}
+
+.btn-primary:hover {
+  color: #04B4AE;
+  border: 1px solid #04B4AE;
+  background-color: #fff;
+}
+
+.btn-primary.border {
+  color: #04B4AE;
+  border: 1px solid #04B4AE;
+  background-color: #fff;
+}
+
+.btn-full {
+  width: 100%;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.radio-wrap {
+  display: flex;
+  width: 65%;
+  gap: 20px
+}
+
+.radio-wrap input[type=radio] {
+  display: none;
+}
+
+.radio-wrap input[type=radio]+label {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.radio-wrap input[type=radio]+label {
+  background-color: #fff;
+  color: #555;
+}
+
+.radio-wrap input[type=radio]:checked+label {
+  background-color: #555;
+  color: #fff;
+}
+
+.profile-img-wrap {
+  width: 300px;
+  height: 350px;
+  margin-bottom: 30px;
+  background-color: #ddd;
+}
+
+.required-icon::before {
+  content: '*';
+  display: inline-block;
+  padding-right: 2px;
+  color: rgb(223, 75, 75);
+}
+
+.sign-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-text {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #757575;
+}
+
+.btn-wrap {
+  display: flex;
+  width: 100%;
+  gap: 1%;
+  margin-top: 10px;
+}
+
+.btn-wrap .btn-primary {
+  flex: 1;
+  height: 45px;
+}
