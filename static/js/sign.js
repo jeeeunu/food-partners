@@ -23,7 +23,7 @@ if (btnSignUpSubmit !== null) {
     formData.append("introduce", introduce);
     formData.append("gender", gender);
     formData.append("address", address);
-    console.log(formData)
+    // console.log(formData)
 
     try {
       const response = await fetch("/api/signup", {
@@ -46,11 +46,6 @@ if (btnSignUpSubmit !== null) {
 }
 
 
-
-
-
-
-
 // 로그인
 const btnSignInSubmit = document.querySelector("#btn-sign-in");
 if (btnSignInSubmit !== null) {
@@ -58,19 +53,47 @@ if (btnSignInSubmit !== null) {
     const email = document.querySelector("#sign-in-email").value;
     const password = document.querySelector("#sign-in-pw").value;
 
-    // API
-    const response = await fetch("/api/auth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      }),
-    });
+    try {
+      // API
+      const response = await fetch("/api/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        }),
+      });
 
-    const data = await response.json();
-    alert("로그인 되었습니다!")
-  })
+      const data = await response.json();
+      if (response.ok) {
+        const token = data.token;
+        console.log(`${token}, 로그인 성공"`);
+      } else {
+        const errorMessage = data.errorMessage;
+        console.log(errorMessage);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  });
 }
+
+
+// 토큰/쿠키확인
+const getCookieValue = (name) => {
+  const cookies = document.cookie.split("; ");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=");
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+  return "";
+};
+
+const token = getCookieValue("Authorization");
+
+
+console.log(token);
