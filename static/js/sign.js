@@ -11,25 +11,26 @@ if (btnSignUpSubmit !== null) {
     const genderInput = document.querySelector('input[type="radio"][name="gender"]:checked');
     const gender = genderInput ? genderInput.id : null;
     const address = document.querySelector("#sign-up-address").value;
+    const profilePictureFile = document.querySelector('#profile-img').files[0];
 
+    const formData = new FormData();
+    formData.append("profilePicture", profilePictureFile);
+    formData.append("email", email);
+    formData.append("nickname", nickname);
+    formData.append("password", password);
+    formData.append("confirm", confirm);
+    formData.append("birth", birth);
+    formData.append("introduce", introduce);
+    formData.append("gender", gender);
+    formData.append("address", address);
+    console.log(formData)
 
     try {
       const response = await fetch("/api/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          nickname: nickname,
-          password: password,
-          confirm: confirm,
-          birth: birth,
-          introduce: introduce,
-          gender: gender,
-          address: address
-        }),
+        body: formData
       });
+
 
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -39,13 +40,15 @@ if (btnSignUpSubmit !== null) {
       alert("회원가입이 되었습니다!");
       window.location.href = "/html/sign-in.html";
     } catch (error) {
-      console.error(error);
       alert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
-
-
   });
 }
+
+
+
+
+
 
 
 // 로그인
@@ -62,7 +65,8 @@ if (btnSignInSubmit !== null) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-
+        email: email,
+        password: password
       }),
     });
 
