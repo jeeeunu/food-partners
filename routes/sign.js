@@ -7,7 +7,6 @@ const upload = require('../middlewares/uploadFile.js');
 
 router.post('/signup', upload, async (req, res) => {
   const { email, nickname, password, confirmPassword, birth, gender, address, introduce } = req.body;
-  const profilepicture = `/img-server/${req.file.filename}`;
   const regExp1 = /^[a-zA-z0-9]{3,12}$/;
   const regExp2 = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
   if (!regExp1.test(nickname)) {
@@ -47,7 +46,7 @@ router.post('/signup', upload, async (req, res) => {
     return;
   }
 
-  const user = await Users.create({ nickname, password, profilepicture, birth, gender, address, introduce });
+  const user = await Users.create({ email, nickname, password, birth, gender, address, introduce });
 
   res.status(201).json({ result: user });
 });

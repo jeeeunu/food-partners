@@ -1,65 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodPartners</title>
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
-    <!-- css -->
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/my-page.css" />
-    <!-- js -->
-    <script type="module" src="../js/common.js"></script>
-  </head>
 
-  <body>
-    <!-- header -->
-    <header></header>
-    <!-- main -->
-    <main>
-      <h2>회원가입</h2>
-      <div class="flex-inner">
-        <div class="form-inner">
-          <div class="input-box">
-            <div class="input-wrap">
-              <label for="" class="required-icon">이메일(ID)</label>
-              <input type="email" required />
-            </div>
-            <button type="button" class="btn-primary">중복확인</button>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodPartners</title>
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/my-page.css">
+  <!-- js -->
+  <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/sign.js"></script>
+</head>
+
+<body>
+  <!-- header -->
+  <header></header>
+  <!-- main -->
+  <main>
+    <h2>회원가입</h2>
+    <div class="flex-inner">
+      <div class="form-inner">
+        <div class="input-box">
           <div class="input-wrap">
-            <label for="" class="required-icon">패스워드</label>
-            <input type="password" required />
+            <label for="" class="required-icon">이메일(ID)</label>
+            <input type="email" required>
           </div>
-          <div class="input-wrap">
-            <label for="" class="required-icon">패스워드 확인</label>
-            <input type="password" required />
-          </div>
-          <div class="input-wrap">
-            <label for="" class="required-icon">닉네임</label>
-            <input type="text" />
-          </div>
-          <div class="input-wrap">
-            <label for="" class="required-icon">생년월일</label>
-            <input type="text" />
-          </div>
-          <div class="input-wrap">
-            <label for="" class="required-icon">한 줄 소개</label>
-            <input type="text" />
-          </div>
-          <div class="input-wrap">
-            <label for="">성별</label>
-            <div class="radio-wrap"><input type="radio" id="radio" name="gender" /><label for="radio">남</label> <input type="radio" id="radio2" name="gender" /><label for="radio2">여</label></div>
-          </div>
-          <button class="btn-primary btn-full">회원가입</button>
+          <button type="button" class="btn-primary">중복확인</button>
         </div>
-        <div>
-          <div class="profile-img-wrap"></div>
-          <input type="file" />
+        <div class="input-wrap">
+          <label for="" class="required-icon">패스워드</label>
+          <input type="password" required>
         </div>
+        <div class="input-wrap">
+          <label for="" class="required-icon">패스워드 확인</label>
+          <input type="password" required>
+        </div>
+        <div class="input-wrap">
+          <label for="" class="required-icon">닉네임</label>
+          <input type="text">
+        </div>
+        <div class="input-wrap">
+          <label for="" class="required-icon">생년월일</label>
+          <input type="text">
+        </div>
+        <div class="input-wrap">
+          <label for="" class="required-icon">한 줄 소개</label>
+          <input type="text">
+        </div>
+        <div class="input-wrap">
+          <label for="">성별</label>
+          <div class="radio-wrap">
+            <input type="radio" id="radio" name="gender"><label for="radio">남</label>
+            <input type="radio" id="radio2" name="gender"><label for="radio2">여</label>
+          </div>
+        </div>
+        <button class="btn-primary btn-full">회원가입</button>
+      </div>
+      <div>
+        <div class="profile-img-wrap"></div>
+        <input type="file">
       </div>
     </main>
     <!-- footer -->
