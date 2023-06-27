@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../css/my-page.css">
   <!-- js -->
   <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/sign.js"></script>
 </head>
 
 <body>
@@ -26,13 +27,13 @@
     <div class="form-inner">
       <div class="input-wrap">
         <label for="">이메일(ID)</label>
-        <input type="email" required>
+        <input type="email" id="sign-in-email" required>
       </div>
       <div class="input-wrap">
         <label for="">password</label>
-        <input type="password" required>
+        <input type="password" id="sign-in-pw" required>
       </div>
-      <button class="btn-primary btn-full">로그인</button>
+      <button type="button" id="btn-sign-in" class="btn-primary btn-full">로그인</button>
       <a href="sign-up.html" class="link-text">회원가입 하기 ></a>
     </div>
   </main>
