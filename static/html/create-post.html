@@ -20,6 +20,7 @@
     <header>
       <div class="left-btn-box">
         <a href="../index.html" class="basic-btn">홈</a>
+        <a href="./my-page.html" class="basic-btn">마이 페이지</a>
       </div>
       <div class="title-box">
         <h3>Food Partners</h3>
@@ -37,18 +38,18 @@
           <img src="https://via.placeholder.com/400x400.jpg" alt="임시 이미지" />
         </div>
         <div class="img-upload-btn">
-          <label for="input-file" class="basic-btn">파일 업로드</button>
-          <input type="file" id="input-file" style="display: none;"/>
+          <label for="create-post-img" class="basic-btn">파일 업로드</button>
+          <input id="create-post-img" type="file" style="display: none;"/>
         </div>
         <div class="create-post-title">
           <label for="">제목 : </label>
-          <input type="text" placeholder="제목" />
+          <input id="create-post-title" type="text" placeholder="제목" />
         </div>
         <div class="create-post-content">
           <label for="">내용 : </label>
-          <textarea type="text" placeholder="내용"></textarea>
+          <textarea id="create-post-content" type="text" placeholder="내용"></textarea>
         </div>
-        <div class="create-post-btn">
+        <div id="create-post-submit" class="create-post-btn">
           <button class="basic-btn">게시하기</button>
         </div>
       </div>

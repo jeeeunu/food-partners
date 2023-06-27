@@ -13,6 +13,7 @@ header div {
   display: flex;
 }
 
+/* 버튼 */
 .basic-btn {
   flex: 0 0 auto;
   height: 50px;
@@ -184,7 +185,7 @@ img:hover {
 }
 
 .create-post-title {
-  width: 400px;
+  width: 800px;
   height: 40px;
 
   margin: 20px auto;
@@ -201,7 +202,7 @@ img:hover {
 }
 
 .create-post-content {
-  width: 400px;
+  width: 800px;
   min-height: 150px;
   height: auto;
 
@@ -220,7 +221,7 @@ img:hover {
 }
 
 .create-post-btn {
-  width: 400px;
+  width: 800px;
   height: 40px;
 
   margin: 20px auto;
