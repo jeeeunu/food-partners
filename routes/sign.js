@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 const { Users } = require('../models');
 
 router.post('/signup', async (req, res) => {
@@ -47,5 +49,29 @@ router.post('/signup', async (req, res) => {
 
   res.status(201).json({ result: user });
 });
+
+// router.post('/upload', upload.single('image'), (req, res) => {
+//   res.status(201).json({ result: 'true' });
+// });
+
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     destination(req, file, done) {
+//       done(null, '../img-server/');
+//     },
+//     filename(req, file, done) {
+//       const ext = path.extname(file.originalname);
+//       done(null, path.basename(file.originalname, ext) + Date.now + ext);
+//     },
+//   }),
+//   fileFilter: function (req, file, done) {
+//     var ext = path.extname(file.originalname);
+//     if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+//       return done(new Error('PNG, JPG 파일만 업로드 가능합니다.'));
+//     }
+//     done(null, true);
+//   },
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });
 
 module.exports = router;
