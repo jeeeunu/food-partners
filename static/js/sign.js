@@ -23,7 +23,6 @@ if (btnSignUpSubmit !== null) {
     formData.append("introduce", introduce);
     formData.append("gender", gender);
     formData.append("address", address);
-    console.log(formData)
 
     try {
       const response = await fetch("/api/signup", {
