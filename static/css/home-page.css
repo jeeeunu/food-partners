@@ -1,0 +1,230 @@
+/* 헤더, 푸터 */
+header {
+  background-color: #ffffff;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.212);
+}
+
+header div {
+  display: flex;
+}
+
+.basic-btn {
+  flex: 0 0 auto;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+  margin: 0 10px 0 10px;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.151);
+
+  font-size: 20px;
+  font-weight: 600;
+
+  transition: all 0.3s;
+}
+
+.basic-btn:hover {
+  background-color: #04b4ae;
+  color: #fff;
+}
+
+.basic-btn span {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.left-btn-box {
+  min-width: 25%;
+  padding: 30px;
+}
+
+.title-box {
+  color: rgb(54, 47, 41);
+
+  min-width: 50%;
+  justify-content: center;
+
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.right-btn-box {
+  min-width: 25%;
+
+  justify-content: right;
+
+  padding: 30px;
+}
+
+main {
+  min-height: 100vh;
+  flex-grow: 1;
+
+  padding: 30px 0;
+}
+
+footer {
+  height: 50px;
+  border-top: 1px solid rgba(0, 0, 0, 0.212);
+
+  font-weight: 300;
+}
+
+.footer-right-box {
+  height: 50px;
+
+  padding: 15px 35px;
+
+  text-align: right;
+}
+
+/* 카드 컨테이너 */
+.card-container {
+  color: #362f29;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+/* 게시글 상세 페이지 */
+.detail-page-box {
+  margin: 0 30px;
+}
+
+.detail-page-img-box {
+  width: 800px;
+  height: 400px;
+
+  display: flex;
+  margin: auto;
+}
+
+.detail-page-img {
+  width: 400px;
+  height: 400px;
+
+  padding: 20px;
+}
+
+.detail-page-title {
+  width: 400px;
+  height: 400px;
+
+  padding: 100px 50px;
+  line-height: 2;
+}
+
+.detail-page-title h1 {
+  font-size: 30px;
+}
+
+.detail-page-title p {
+  font-size: 20px;
+}
+
+.detail-page-content {
+  width: 800px;
+
+  margin: auto;
+  padding: 20px;
+}
+
+.detail-page-content p {
+  word-wrap: break-word;
+}
+
+.detail-page-btn-box {
+  width: 800px;
+  height: 50px;
+
+  margin: 20px auto;
+
+  display: flex;
+  justify-content: right;
+}
+
+/* 게시글 작성 */
+.create-post-box {
+  flex-grow: 1;
+}
+
+.create-post-img {
+  width: 400px;
+  height: 400px;
+
+  margin: auto;
+}
+
+.img-upload-btn {
+  width: 400px;
+  height: 20px;
+
+  margin: 30px auto 50px auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.create-post-title {
+  width: 400px;
+  height: 40px;
+
+  margin: 20px auto;
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  font-size: 14px;
+}
+
+.create-post-title input {
+  width: 90%;
+}
+
+.create-post-content {
+  width: 400px;
+  min-height: 150px;
+  height: auto;
+
+  margin: 20px auto;
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  font-size: 14px;
+}
+
+.create-post-content textarea {
+  width: 90%;
+  height: 120px;
+}
+
+.create-post-btn {
+  width: 400px;
+  height: 40px;
+
+  margin: 20px auto;
+
+  display: flex;
+  justify-content: right;
+}
