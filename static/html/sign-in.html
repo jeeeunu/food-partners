@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodPartners</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <!-- css -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/my-page.css" />
+    <!-- js -->
+    <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/sign.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodPartners</title>
-  <!-- font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-    rel="stylesheet">
-  <!-- css -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/my-page.css">
-  <!-- js -->
-  <script type="module" src="../js/common.js"></script>
-  <script type="module" src="../js/sign.js"></script>
-</head>
-
-<body>
-  <!-- header -->
-  <header></header>
-  <!-- main -->
-  <main class="sign-in-page">
-    <h2>로그인</h2>
-    <div class="form-inner">
-      <div class="input-wrap">
-        <label for="">이메일(ID)</label>
-        <input type="email" id="sign-in-email" required>
+  <body>
+    <!-- header -->
+    <header></header>
+    <!-- main -->
+    <main class="sign-in-page">
+      <h2>로그인</h2>
+      <div class="form-inner">
+        <div class="input-wrap">
+          <label for="">이메일(ID)</label>
+          <input type="email" required />
+        </div>
+        <div class="input-wrap">
+          <label for="">password</label>
+          <input type="password" required />
+        </div>
+        <button class="btn-primary btn-full">로그인</button>
+        <a href="sign-up.html" class="link-text">회원가입 하기 ></a>
       </div>
-      <div class="input-wrap">
-        <label for="">password</label>
-        <input type="password" id="sign-in-pw" required>
-      </div>
-      <button type="button" id="btn-sign-in" class="btn-primary btn-full">로그인</button>
-      <a href="sign-up.html" class="link-text">회원가입 하기 ></a>
-    </div>
-  </main>
-  <!-- footer -->
-  <footer></footer>
-</body>
-
+    </main>
+    <!-- footer -->
+    <footer></footer>
+  </body>
 </html>
