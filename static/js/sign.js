@@ -50,12 +50,14 @@ if (btnSignUpSubmit !== null) {
 const btnSignInSubmit = document.querySelector("#btn-sign-in");
 if (btnSignInSubmit !== null) {
   btnSignInSubmit.addEventListener("click", async () => {
+
     const email = document.querySelector("#sign-in-email").value;
     const password = document.querySelector("#sign-in-pw").value;
 
     try {
+      console.log("찍는중")
       // API
-      const response = await fetch("/api/auth", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

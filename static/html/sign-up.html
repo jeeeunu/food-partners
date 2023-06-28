@@ -42,43 +42,48 @@
         <div class="input-box">
           <div class="input-wrap">
             <label for="" class="required-icon">이메일(ID)</label>
-            <input type="email" required>
+            <input type="email" id="sign-up-email" required>
           </div>
           <button type="button" class="btn-primary">중복확인</button>
         </div>
         <div class="input-wrap">
           <label for="" class="required-icon">패스워드</label>
-          <input type="password" required>
+          <input type="password" id="sign-up-pw" required>
         </div>
         <div class="input-wrap">
           <label for="" class="required-icon">패스워드 확인</label>
-          <input type="password" required>
+          <input type="password" id="sign-up-pw-confirm" required>
         </div>
         <div class="input-wrap">
           <label for="" class="required-icon">닉네임</label>
-          <input type="text">
+          <input type="text" id="sign-up-nickname">
         </div>
         <div class="input-wrap">
           <label for="" class="required-icon">생년월일</label>
-          <input type="text">
+          <input type="text" id="sign-up-birth">
         </div>
         <div class="input-wrap">
           <label for="" class="required-icon">한 줄 소개</label>
-          <input type="text">
+          <input type="text" id="sign-up-info">
         </div>
         <div class="input-wrap">
           <label for="">성별</label>
           <div class="radio-wrap">
-            <input type="radio" id="radio" name="gender"><label for="radio">남</label>
-            <input type="radio" id="radio2" name="gender"><label for="radio2">여</label>
+            <input type="radio" id="M" name="gender"><label for="M">남</label>
+            <input type="radio" id="F" name="gender"><label for="F">여</label>
           </div>
         </div>
-        <button class="btn-primary btn-full">회원가입</button>
+        <div class="input-wrap">
+          <label for="">주소</label>
+          <input type="text" id="sign-up-address">
+        </div>
+        <button id="sign-up-submit" class="btn-primary btn-full">회원가입</button>
       </div>
       <div>
         <div class="profile-img-wrap"></div>
         <input type="file" id="profile-img">
       </div>
+    </div>
   </main>
   <!-- footer -->
   <footer></footer>
