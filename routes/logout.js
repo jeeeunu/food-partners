@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 router.delete('/logout', async (req, res) => {
-  const { Authorization } = req.cookies;
   try {
     res.clearCookie('Authorization');
     alert('로그아웃이 완료되었습니다.');

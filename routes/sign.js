@@ -5,7 +5,7 @@ const path = require('path');
 const { Users } = require('../models');
 const upload = require('../middlewares/uploadFile.js');
 
-router.post('/signup', upload, async (req, res) => {
+router.post('/signup', async (req, res) => {
   const { email, nickname, password, confirmPassword, birth, gender, address, introduce } = req.body;
   const regExp1 = /^[a-zA-z0-9]{3,12}$/;
   const regExp2 = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
@@ -46,9 +46,10 @@ router.post('/signup', upload, async (req, res) => {
     return;
   }
 
-  const user = await Users.create({ email, nickname, password, birth, gender, address, introduce });
+  upload;
+  const profilepicture = req.file;
+  const user = await Users.create({ email, nickname, password, profilepicture, birth, gender, address, introduce });
 
   res.status(201).json({ result: user });
 });
-
 module.exports = router;
