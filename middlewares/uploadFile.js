@@ -10,13 +10,13 @@ const imageFilter = (req, file, cb) => {
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __basedir + '../img-server');
+    cb(null, './img-server');
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-bezkoder-${file.originalname}`);
+    cb(null, `${Date.now()}${file.originalname}`);
   },
 });
 
-var uploadFile = multer({ storage: storage, fileFilter: imageFilter }).single('photo');
+var uploadFile = multer({ storage: storage, fileFilter: imageFilter }).single('profilePicture');
 
 module.exports = uploadFile;

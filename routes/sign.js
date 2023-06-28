@@ -5,8 +5,15 @@ const path = require('path');
 const { Users } = require('../models');
 const upload = require('../middlewares/uploadFile.js');
 
-router.post('/signup', async (req, res) => {
-  const { email, nickname, password, confirmPassword, birth, gender, address, introduce } = req.body;
+router.post('/signup', upload, async (req, res) => {
+  console.log(req.body);
+
+  const { email, nickname, password, confirm, birth, gender, address, introduce } = req.body;
+  let profilepicture = req.file;
+  if (profilepicture) {
+    profilepicture = path.join('uploads', req.file.filename);
+  }
+
   const regExp1 = /^[a-zA-z0-9]{3,12}$/;
   const regExp2 = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
   if (!regExp1.test(nickname)) {
@@ -23,7 +30,7 @@ router.post('/signup', async (req, res) => {
     return;
   }
 
-  if (password !== confirmPassword) {
+  if (password !== confirm) {
     res.status(400).json({
       errorMessage: '패스워드가 패스워드 확인란과 다릅니다.',
     });
@@ -46,8 +53,6 @@ router.post('/signup', async (req, res) => {
     return;
   }
 
-  upload;
-  const profilepicture = req.file;
   const user = await Users.create({ email, nickname, password, profilepicture, birth, gender, address, introduce });
 
   res.status(201).json({ result: user });
