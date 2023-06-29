@@ -87,6 +87,7 @@ router.delete('/userInfo', authMiddleware, async (req, res) => {
   const existsUser = await Users.findOne({ where: { userid } });
   if (existsUser) {
     await Users.destroy({ where: { userid } });
+    res.clearCookie('Authorization');
     res.status(200).json({ result: 'success' });
   } else {
     res.status(403).json({ result: 'false', errorMessage: '탈퇴를 진행할 아이디를 로그인해주세요.' });
