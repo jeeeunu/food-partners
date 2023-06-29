@@ -59,12 +59,10 @@ function setThumbnail(event) {
 
   reader.readAsDataURL(event.target.files[0]);
 }
-
 const fileDOM = document.querySelector("#profile-img");
 if (fileDOM !== null) {
   fileDOM.addEventListener("change", setThumbnail);
 }
-
 
 // 로그인
 const btnSignInSubmit = document.querySelector("#btn-sign-in");
@@ -117,6 +115,5 @@ const getCookieValue = (name) => {
 };
 
 const token = getCookieValue("Authorization");
-
-
 console.log(token);
+
