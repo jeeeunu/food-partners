@@ -79,8 +79,15 @@ router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
 });
 
 router.delete('/users/:userId', authMiddleware, async (req, res) => {
-  const { postId } = req.params;
-  const existsUser = await Posts.findOne({ where: { postId } });
+  const { userId } = req.params;
+  const existsUser = await Users.findOne({ where: { userId } });
+  const UserId = res.locals.user.userId;
+  if (existsUser.userId === UserId) {
+    await Users.destroy({ where: { userId } });
+    res.json({ result: 'success' });
+  } else {
+    res.json({ result: 'false', errorMessage: '회원탈퇴를 진행할 회원의 아이디를 로그인을 해주십시오.' });
+  }
 });
 
 module.exports = router;
