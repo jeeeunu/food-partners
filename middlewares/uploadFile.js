@@ -8,15 +8,22 @@ const imageFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __basedir + '../img-server');
+    cb(null, './img-server');
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-bezkoder-${file.originalname}`);
+    cb(null, `${Date.now()}${file.originalname}`);
   },
 });
 
-var uploadFile = multer({ storage: storage, fileFilter: imageFilter }).single('photo');
+let limits = (req, file, cb) => {
+  if (file.fileSize > 5 * 1024 * 1024) {
+    return cb(new Error('파일 사이즈가 너무 큽니다.'));
+  }
+  cb(null, true);
+};
+
+let uploadFile = multer({ storage: storage, fileFilter: imageFilter, limits: limits }).single('profilePicture');
 
 module.exports = uploadFile;
