@@ -86,7 +86,7 @@ router.delete('/userInfo', authMiddleware, async (req, res) => {
     await Users.destroy({ where: { userid } });
     res.status(200).json({ result: 'success' });
   } else {
-    res.status(400).json({ result: 'false', errorMessage: '탈퇴를 진행할 아이디를 로그인해주세요.' });
+    res.status(403).json({ result: 'false', errorMessage: '탈퇴를 진행할 아이디를 로그인해주세요.' });
   }
 });
 
