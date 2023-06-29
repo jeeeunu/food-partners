@@ -10,24 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
     <!-- css -->
     <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/home-page.css" />
     <!-- js -->
     <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/post.js" defer></script>
   </head>
 
   <body>
     <!-- header -->
     <header>
       <div class="left-btn-box">
-        <a href="../index.html" class="basic-btn">홈</a>
-        <a href="./my-page.html" class="basic-btn">마이 페이지</a>
+        <a href="/" class="basic-btn">홈</a>
+        <a href="my-page.html" class="basic-btn">마이 페이지</a>
       </div>
       <div class="title-box">
         <h3>Food Partners</h3>
       </div>
       <div class="right-btn-box">
-        <a href="./create-post.html" class="basic-btn">작성</a>
-        <a href="./sign-in.html" class="basic-btn">로그인</a>
+        <a href="create-post.html" class="basic-btn">작성</a>
+        <a href="sign-in.html" class="basic-btn">로그인</a>
         <!-- <button>마이 페이지</button> -->
       </div>
     </header>
@@ -45,13 +47,13 @@
           </div>
         </div>
         <div class="detail-page-content">
-          <p>
+          <!-- <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere consequat dolor. Sed eros est, viverra sit amet ultricies a, laoreet vel ex. Duis semper varius dignissim. Quisque et mauris massa. Ut congue ac justo in tempus. Nulla et eros tincidunt, pellentesque nunc ac, pretium enim. Integer eu augue quis nisl aliquet volutpat. Aliquam cursus, velit tempus egestas dictum, enim dolor mattis odio, eu faucibus diam quam nec lectus. Aenean orci purus, elementum a mauris sed,
             finibus molestie eros. Ut ac accumsan dolor. Aenean aliquet vitae est at rhoncus. Praesent consequat egestas fringilla. Duis lectus est, pellentesque at efficitur ac, blandit nec ante. Maecenas turpis turpis, consequat posuere nulla nec, tristique sollicitudin arcu.
-          </p>
+          </p> -->
         </div>
         <div class="detail-page-btn-box">
-          <a href="../html/create-post.html" class="basic-btn">게시글 수정</a>
+          <a href="../html/create-post.html" id="detail-page-update" class="basic-btn">게시글 수정</a>
           <button id="detail-page-delete" class="basic-btn">게시글 삭제</button>
         </div>
       </div>

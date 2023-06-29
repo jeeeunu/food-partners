@@ -1,16 +1,8 @@
-/* 헤더, 푸터 */
-header {
-  background-color: #ffffff;
-  height: 100px;
+main {
+  min-height: 100vh;
+  flex-grow: 1;
 
-  display: flex;
-  align-items: center;
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.212);
-}
-
-header div {
-  display: flex;
+  padding: 30px 0;
 }
 
 /* 버튼 */
@@ -33,59 +25,9 @@ header div {
   transition: all 0.3s;
 }
 
-.basic-btn:hover {
-  background-color: #04b4ae;
-  color: #fff;
-}
-
 .basic-btn span {
   flex: 1;
   white-space: nowrap;
-}
-
-.left-btn-box {
-  min-width: 25%;
-  padding: 30px;
-}
-
-.title-box {
-  color: rgb(54, 47, 41);
-
-  min-width: 50%;
-  justify-content: center;
-
-  font-size: 40px;
-  font-weight: 100;
-}
-
-.right-btn-box {
-  min-width: 25%;
-
-  justify-content: right;
-
-  padding: 30px;
-}
-
-main {
-  min-height: 100vh;
-  flex-grow: 1;
-
-  padding: 30px 0;
-}
-
-footer {
-  height: 50px;
-  border-top: 1px solid rgba(0, 0, 0, 0.212);
-
-  font-weight: 300;
-}
-
-.footer-right-box {
-  height: 50px;
-
-  padding: 15px 35px;
-
-  text-align: right;
 }
 
 /* 카드 컨테이너 */

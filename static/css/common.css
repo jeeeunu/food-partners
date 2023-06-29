@@ -1,3 +1,4 @@
+/* 헤더 */
 header {
   position: relative;
   justify-content: space-between;
@@ -57,7 +58,6 @@ header a span {
   padding: 30px;
 }
 
-
 .right-btn-box {
   min-width: 25%;
 
@@ -66,7 +66,7 @@ header a span {
   padding: 30px;
 }
 
-
+/* 푸터 */
 footer {
   height: 50px;
   border-top: 1px solid rgba(0, 0, 0, 0.212);
