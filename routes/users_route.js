@@ -16,7 +16,7 @@ router.get('/userInfo', authMiddleware, async (req, res) => {
 });
 
 router.put('/userInfo', authMiddleware, upload, async (req, res) => {
-  const { email, nickname, password, confirm, birth, gender, address, introduce } = req.body;
+  const { nickname, password, confirm, birth, gender, address, introduce } = req.body;
   let profilepicture = req.file;
   if (profilepicture) {
     profilepicture = path.join('img-server', req.file.filename);
@@ -54,9 +54,8 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
   }
 
   const existNickname = await Users.findOne({ where: { nickname: nickname } });
-  const existEmail = await Users.findOne({ where: { email: email } });
 
-  if (existNickname) {
+  if (existNickname && existNickname.nickname !== nickname) {
     res.status(400).json({
       errorMessage: '중복된 닉네임입니다.',
     });
@@ -66,20 +65,10 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
     return;
   }
 
-  if (existEmail) {
-    res.status(400).json({
-      errorMessage: '이미 가입된 이메일입니다.',
-    });
-    if (profilepicture) {
-      fs.unlinkSync('./img-server/' + req.file.filename);
-    }
-    return;
-  }
-
   const userid = res.locals.user.userid;
-  const existuser = findeOne({ where: userid });
+  const existuser = await Users.findOne({ where: userid });
   if (existuser) {
-    await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userid });
+    await Users.update({ nickname, password, profilepicture, birth, gender, address, introduce }, { where: { userid } });
     res.json({ success: 'true' });
   } else {
     res.json({ success: 'false', errorMessage: '오류가 발생했습니다.' });
