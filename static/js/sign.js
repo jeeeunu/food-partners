@@ -45,6 +45,24 @@ if (btnSignUpSubmit !== null) {
   });
 }
 
+// 회원가입 프로필 이미지 미리보기
+function setThumbnail(event) {
+  const reader = new FileReader();
+  const previewWrap = document.querySelector(".profile-img-wrap");
+
+  reader.onload = function (event) {
+    previewWrap.innerHTML = ''
+    const img = document.createElement("img");
+    img.src = event.target.result;
+    previewWrap.appendChild(img);
+  };
+
+  reader.readAsDataURL(event.target.files[0]);
+}
+const fileDOM = document.querySelector("#profile-img");
+if (fileDOM !== null) {
+  fileDOM.addEventListener("change", setThumbnail);
+}
 
 // 로그인
 const btnSignInSubmit = document.querySelector("#btn-sign-in");
@@ -55,7 +73,6 @@ if (btnSignInSubmit !== null) {
     const password = document.querySelector("#sign-in-pw").value;
 
     try {
-      console.log("찍는중")
       // API
       const response = await fetch("/api/login", {
         method: "POST",
@@ -72,6 +89,8 @@ if (btnSignInSubmit !== null) {
       if (response.ok) {
         const token = data.token;
         console.log(`${token}, 로그인 성공"`);
+        alert("로그인 되었습니다.")
+        window.location.href = "/"
       } else {
         const errorMessage = data.errorMessage;
         console.log(errorMessage);
@@ -96,6 +115,5 @@ const getCookieValue = (name) => {
 };
 
 const token = getCookieValue("Authorization");
-
-
 console.log(token);
+

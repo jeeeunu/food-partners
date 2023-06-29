@@ -3,7 +3,9 @@ const { Users } = require('../models');
 
 module.exports = async (req, res, next) => {
   const { Authorization } = req.cookies;
+  // console.log(Authorization)
   const [authType, authToken] = (Authorization ?? '').split(' ');
+
 
   if (!authToken || authType !== 'Bearer') {
     res.status(401).send({
@@ -12,9 +14,10 @@ module.exports = async (req, res, next) => {
     return;
   }
 
+  console.log(authToken)
+
   try {
     const { userid } = jwt.verify(authToken, 'customized-secret-key');
-    console.log(userid);
     const user = await Users.findOne({ where: { userid } });
     res.locals.user = user;
     next();
