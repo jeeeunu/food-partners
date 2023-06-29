@@ -68,9 +68,12 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
 
   const userid = res.locals.user.userid;
   const existuser = await Users.findOne({ where: userid });
+
   if (existuser) {
-    if (fs.existsSync(existuser.profilepicture)) {
-      fs.unlinkSync(existuser.profilepicture);
+    if (profilepicture) {
+      if (fs.existsSync(existuser.profilepicture)) {
+        fs.unlinkSync(existuser.profilepicture);
+      }
     }
     await Users.update({ nickname, password, profilepicture, birth, gender, address, introduce }, { where: { userid } });
     res.status(200).json({ success: 'true' });
