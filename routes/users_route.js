@@ -5,13 +5,14 @@ const authMiddleware = require('../middlewares/auth-middleware.js');
 const upload = require('../middlewares/uploadFile.js');
 
 router.get('/userInfo', authMiddleware, async (req, res) => {
-  const userId = res.locals.user.userId;
+  const userid = res.locals.user.userid;
+
   const user = await Users.findOne({
     attributes: ['email', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
-    where: { userId },
+    where: { userid },
   });
 
-  return res.status(200).json({ data: user });
+  return res.status(200).json({ result: user });
 });
 
 router.put('/userInfo', authMiddleware, upload, async (req, res) => {
@@ -65,10 +66,10 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
     return;
   }
 
-  const userId = res.locals.user.userId;
-  const existuser = findeOne({ where: userId });
+  const userid = res.locals.user.userid;
+  const existuser = findeOne({ where: userid });
   if (existuser) {
-    await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userId });
+    await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userid });
     res.json({ success: 'true' });
   } else {
     res.json({ success: 'false', errorMessage: '오류가 발생했습니다.' });
@@ -76,11 +77,10 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
 });
 
 router.delete('/userInfo', authMiddleware, async (req, res) => {
-  const userId = res.locals.user.userId;
-  const existsUser = await Users.findOne({ where: { userId } });
-
+  const userid = res.locals.user.userid;
+  const existsUser = await Users.findOne({ where: { userid } });
   if (existsUser) {
-    await Users.destroy({ where: { userId } });
+    await Users.destroy({ where: { userid } });
     res.json({ result: 'success' });
   } else {
     res.json({ result: 'false', errorMessage: '탈퇴를 진행할 아이디를 로그인해주세요.' });
