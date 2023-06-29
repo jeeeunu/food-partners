@@ -25,3 +25,26 @@ if (document.cookie.includes("Authorization")) {
     `;
   }
 }
+
+// 프로필 이미지 미리보기
+function setThumbnail(event) {
+  const reader = new FileReader();
+  const previewWrap = document.querySelector(".profile-img-wrap");
+
+  reader.onload = function (event) {
+    previewWrap.innerHTML = '';
+    const img = document.createElement("img");
+    img.src = event.target.result;
+    previewWrap.appendChild(img);
+  };
+
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+// 이벤트 위임(동적요소 적용위해 추가)
+document.addEventListener("change", function (event) {
+  if (event.target && event.target.matches("#profile-img")) {
+    setThumbnail(event);
+  }
+});
+

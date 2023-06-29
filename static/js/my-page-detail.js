@@ -1,3 +1,4 @@
+console.log("my-page-detail.js 연결")
 function fetchData(url, options) {
   return fetch(url, options)
     .then((response) => {
@@ -10,11 +11,14 @@ function fetchData(url, options) {
       console.error(error);
     });
 }
+
+
+// 마이페이지 회원정보 조회
 const fetchAndDisplayUser = () => {
   fetchData('/api/userInfo').then((data) => {
-    const userInformation = document.querySelector('main');
+    const userInformation = document.querySelector('#my-page-form');
     userInformation.innerHTML = '';
-    const { email, profilepicture, nickname, birth, gender, address, introduce, updatedAt } = data.result;
+    const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
 
     let profileImage = '';
     if (profilepicture) {
@@ -22,7 +26,6 @@ const fetchAndDisplayUser = () => {
     } else {
       profileImage = `<img src="../images/default_img.png" alt="기본 프로필 이미지">`;
     }
-
     userInformation.innerHTML = `
       <h2>마이 페이지</h2>
       <div class="profile-img-wrap">
@@ -50,7 +53,7 @@ const fetchAndDisplayUser = () => {
       </div>
       <a href="../index.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
       <div class="btn-wrap">
-        <a href="./sign-up.html" class="btn-primary border">회원 수정</a>
+        <a href="./my-page-edit.html" class="btn-primary border">회원 수정</a>
         <a href="" class="btn-primary border">회원 탈퇴</a>
       </div>
     `;
