@@ -82,11 +82,15 @@ router.delete('/users/:userId', authMiddleware, async (req, res) => {
   const { userId } = req.params;
   const existsUser = await Users.findOne({ where: { userId } });
   const UserId = res.locals.user.userId;
-  if (existsUser.userId === UserId) {
-    await Users.destroy({ where: { userId } });
-    res.json({ result: 'success' });
+  if (existsUser) {
+    if (existsUser.userId === UserId) {
+      await Users.destroy({ where: { userId } });
+      res.json({ result: 'success' });
+    } else {
+      res.json({ result: 'false', errorMessage: '회원탈퇴를 진행할 회원의 아이디를 로그인을 해주십시오.' });
+    }
   } else {
-    res.json({ result: 'false', errorMessage: '회원탈퇴를 진행할 회원의 아이디를 로그인을 해주십시오.' });
+    res.json({ result: 'false', errorMessage: '존재하지 않는 회원입니다.' });
   }
 });
 
