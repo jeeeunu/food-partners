@@ -31,14 +31,15 @@ if (btnSignUpSubmit !== null) {
         body: formData
       });
 
-
-      if (!response.ok) {
+      const data = await response.json();
+      if (response.ok) {
+        alert("회원가입이 되었습니다!");
+        window.location.href = "/html/sign-in.html";
+      } else {
+        const { errorMessage } = data;
+        alert(errorMessage);
         throw new Error(response.statusText);
       }
-
-      const data = await response.json();
-      alert("회원가입이 되었습니다!");
-      window.location.href = "/html/sign-in.html";
     } catch (error) {
       alert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
@@ -73,8 +74,8 @@ if (btnSignInSubmit !== null) {
         alert("로그인 되었습니다.")
         window.location.href = "/"
       } else {
-        const errorMessage = data.errorMessage;
-        console.log(errorMessage);
+        const { errorMessage } = data;
+        alert(errorMessage);
       }
     } catch (error) {
       console.error(error);

@@ -19,11 +19,20 @@ const fetchAndDisplayUser = () => {
     userInformation.innerHTML = '';
     const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
 
+    // 이미지
     let profileImage = '';
     if (profilepicture) {
       profileImage = `<img src="/${profilepicture.replace(/\\/g, '/')}" alt="프로필 이미지">`;
     } else {
       profileImage = `<img src="../images/default_img.png" alt="기본 프로필 이미지">`;
+    }
+
+    // 성별
+    let genderData = '';
+    if (gender === 'M') {
+      genderData = `👦 남자`;
+    } else if (gender === 'F') {
+      genderData = `👩‍🦰 여자 `;
     }
     userInformation.innerHTML = `
       <h2>마이 페이지</h2>
@@ -48,7 +57,7 @@ const fetchAndDisplayUser = () => {
       </div>
       <div class="input-wrap">
         <label for="">성별</label>
-        <p>${gender}</p>
+        <p>${genderData}</p>
       </div>
       <div class="input-wrap">
       <label for="">주소</label>
@@ -58,7 +67,7 @@ const fetchAndDisplayUser = () => {
       <div class="btn-wrap">
         <a href="./my-page-edit.html" class="btn-primary border">회원 수정</a>
         <button id="btn-logout" class="btn-primary border">로그아웃</button>
-        <button id="btn-logout" class="btn-primary border red">회원 탈퇴</button>
+        <button id="btn-delete" class="btn-primary border red">회원 탈퇴</button>
       </div>
     `;
   });
@@ -67,8 +76,8 @@ const fetchAndDisplayUser = () => {
 window.onload = fetchAndDisplayUser;
 
 // 로그아웃
-document.addEventListener("click", function (event) {
-  if (event.target && event.target.id === "btn-logout") {
+document.addEventListener('click', async (event) => {
+  if (event.target.id === "btn-logout") {
     try {
       const response = fetch("/api/logout", {
         method: "DELETE",
@@ -79,4 +88,22 @@ document.addEventListener("click", function (event) {
       console.error("로그아웃 오류:", error);
     }
   }
+
+  // 회원 탈퇴하기
+  if (event.target.matches('#btn-delete')) {
+    console.log('hey')
+    try {
+      const response = await fetch('/api/userInfo', {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      alert('삭제되었습니다');
+      window.location.href = '/';
+    } catch (error) {
+      alert('삭제에 실패했습니다. 다시 시도해주세요.');
+    }
+  }
+
 });
+

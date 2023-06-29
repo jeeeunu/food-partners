@@ -1,4 +1,5 @@
 console.log('my-page-edit.js 연결');
+
 function fetchData(url, options) {
   return fetch(url, options)
     .then((response) => {
@@ -84,14 +85,10 @@ const fetchAndDisplayUser = () => {
 
 window.onload = fetchAndDisplayUser;
 
-// 마이페이지 회원정보 수정
-const userInformation = document.querySelector('#my-page-edit-form');
+document.addEventListener('click', async (event) => {
 
-userInformation.addEventListener('click', async (event) => {
-  const target = event.target;
-
-  // 수정 버튼이 클릭된 경우 처리
-  if (target.matches('#edit-submit')) {
+  // 마이페이지 회원정보 수정하기
+  if (event.target.matches('#edit-submit')) {
     console.log('찍는중');
 
     const password = document.querySelector('#edit-pw').value;
@@ -128,4 +125,5 @@ userInformation.addEventListener('click', async (event) => {
       alert('수정에 실패했습니다. 다시 시도해주세요.');
     }
   }
+
 });
