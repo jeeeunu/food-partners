@@ -69,7 +69,7 @@ router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
   const UserId = res.locals.user.userId;
   const existuser = findeOne({ where: userId });
   if (existuser) {
-    if (existsPosts.userId === UserId) {
+    if (existuser.userId === UserId) {
       await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userId });
       res.json({ success: 'true' });
     }
@@ -78,6 +78,9 @@ router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
   }
 });
 
-router.delete('/users/:userId', authMiddleware, async (req, res) => {});
+router.delete('/users/:userId', authMiddleware, async (req, res) => {
+  const { postId } = req.params;
+  const existsUser = await Posts.findOne({ where: { postId } });
+});
 
 module.exports = router;
