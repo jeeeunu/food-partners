@@ -45,6 +45,24 @@ if (btnSignUpSubmit !== null) {
   });
 }
 
+// 회원가입 프로필 이미지 미리보기
+function setThumbnail(event) {
+  const reader = new FileReader();
+  const previewWrap = document.querySelector(".profile-img-wrap");
+
+  reader.onload = function (event) {
+    previewWrap.innerHTML = ''
+    const img = document.createElement("img");
+    img.src = event.target.result;
+    previewWrap.appendChild(img);
+  };
+
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+const fileDOM = document.querySelector("#profile-img");
+fileDOM.addEventListener("change", setThumbnail);
+
 
 // 로그인
 const btnSignInSubmit = document.querySelector("#btn-sign-in");
