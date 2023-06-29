@@ -18,11 +18,22 @@ const fetchAndDisplayUser = () => {
     userInformation.innerHTML = '';
     const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
 
+    // 이미지
     let profileImage = '';
     if (profilepicture) {
       profileImage = `<img src="/${profilepicture.replace(/\\/g, '/')}" alt="프로필 이미지">`;
     } else {
       profileImage = `<img src="../images/default_img.png" alt="기본 프로필 이미지">`;
+    }
+
+    // 성별
+    let genderData = ''
+    if (gender === 'M') {
+      genderData = ` <input type="radio" id="M" name="gender" checked><label for="M">남</label>
+      <input type="radio" id="F" name="gender"><label for="F">여</label>`
+    } else if (gender === 'F') {
+      genderData = ` <input type="radio" id="M" name="gender"><label for="M">남</label>
+      <input type="radio" id="F" name="gender" checked><label for="F">여</label>`
     }
     userInformation.innerHTML = `
         <div class="form-inner">
@@ -53,8 +64,7 @@ const fetchAndDisplayUser = () => {
           <div class="input-wrap">
             <label for="">성별</label>
             <div class="radio-wrap">
-              <input type="radio" id="M" name="gender"><label for="M">남</label>
-              <input type="radio" id="F" name="gender"><label for="F">여</label>
+             ${genderData}
             </div>
           </div>
           <div class="input-wrap">

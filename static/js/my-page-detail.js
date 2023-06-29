@@ -50,10 +50,15 @@ const fetchAndDisplayUser = () => {
         <label for="">성별</label>
         <p>${gender}</p>
       </div>
+      <div class="input-wrap">
+      <label for="">주소</label>
+      <p>${address}</p>
+    </div>
       <a href="../index.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
       <div class="btn-wrap">
         <a href="./my-page-edit.html" class="btn-primary border">회원 수정</a>
         <button id="btn-logout" class="btn-primary border">로그아웃</button>
+        <button id="btn-logout" class="btn-primary border red">회원 탈퇴</button>
       </div>
     `;
   });
