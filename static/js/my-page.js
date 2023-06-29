@@ -12,10 +12,7 @@ function fetchData(url, options) {
 }
 
 const fetchAndDisplayUser = () => {
-  fetchData('/api/users/1', {
-    headers: {
-      Authorization: 'Bearer your_token_here', // 사용자 인증 토큰을 포함한 요청 헤더
-    },
+  fetchData('/api/userInfo', {
   })
     .then(data => {
       const userInformation = document.querySelector('main');

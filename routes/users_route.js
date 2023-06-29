@@ -3,9 +3,11 @@ const router = express.Router();
 const { Users } = require('../models');
 const authMiddleware = require('../middlewares/auth-middleware.js');
 const upload = require('../middlewares/uploadFile.js');
+const { Console } = require('console');
 
 router.get('/userInfo', authMiddleware, async (req, res) => {
   const userId = res.locals.user.userId;
+  console.log(userId)
   const user = await Users.findOne({
     attributes: ['email', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
     where: { userId },
