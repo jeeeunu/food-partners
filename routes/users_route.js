@@ -4,9 +4,8 @@ const { Users } = require('../models');
 const authMiddleware = require('../middlewares/auth-middleware.js');
 const upload = require('../middlewares/uploadFile.js');
 
-router.get('/users/:userId', authMiddleware, async (req, res) => {
-  const { userId } = req.params;
-
+router.get('/userInfo', authMiddleware, async (req, res) => {
+  const userId = res.locals.user.userId;
   const user = await Users.findOne({
     attributes: ['email', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
     where: { userId },
@@ -15,8 +14,7 @@ router.get('/users/:userId', authMiddleware, async (req, res) => {
   return res.status(200).json({ data: user });
 });
 
-router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
-  const { userId } = req.params;
+router.put('/userInfo', authMiddleware, upload, async (req, res) => {
   const { email, nickname, password, confirm, birth, gender, address, introduce } = req.body;
   let profilepicture = req.file;
   if (profilepicture) {
@@ -66,31 +64,26 @@ router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
     fs.unlinkSync('./img-server/' + req.file.filename);
     return;
   }
-  const UserId = res.locals.user.userId;
+
+  const userId = res.locals.user.userId;
   const existuser = findeOne({ where: userId });
   if (existuser) {
-    if (existuser.userId === UserId) {
-      await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userId });
-      res.json({ success: 'true' });
-    }
+    await Users.update({ email, nickname, password, profilepicture, birth, gender, address, introduce }, { where: userId });
+    res.json({ success: 'true' });
   } else {
     res.json({ success: 'false', errorMessage: '오류가 발생했습니다.' });
   }
 });
 
-router.delete('/users/:userId', authMiddleware, async (req, res) => {
-  const { userId } = req.params;
+router.delete('/userInfo', authMiddleware, async (req, res) => {
+  const userId = res.locals.user.userId;
   const existsUser = await Users.findOne({ where: { userId } });
-  const UserId = res.locals.user.userId;
+
   if (existsUser) {
-    if (existsUser.userId === UserId) {
-      await Users.destroy({ where: { userId } });
-      res.json({ result: 'success' });
-    } else {
-      res.json({ result: 'false', errorMessage: '회원탈퇴를 진행할 회원의 아이디를 로그인을 해주십시오.' });
-    }
+    await Users.destroy({ where: { userId } });
+    res.json({ result: 'success' });
   } else {
-    res.json({ result: 'false', errorMessage: '존재하지 않는 회원입니다.' });
+    res.json({ result: 'false', errorMessage: '탈퇴를 진행할 아이디를 로그인해주세요.' });
   }
 });
 
