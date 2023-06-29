@@ -61,7 +61,9 @@ function setThumbnail(event) {
 }
 
 const fileDOM = document.querySelector("#profile-img");
-fileDOM.addEventListener("change", setThumbnail);
+if (fileDOM !== null) {
+  fileDOM.addEventListener("change", setThumbnail);
+}
 
 
 // 로그인
