@@ -16,7 +16,7 @@ const fetchAndDisplayUser = () => {
   fetchData('/api/userInfo').then((data) => {
     const userInformation = document.querySelector('#my-page-edit-form');
     userInformation.innerHTML = '';
-    const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
+    const { email, profilepicture, nickname, birth, gender, address, introduce, password } = data.result;
 
     // 이미지
     let profileImage = '';
@@ -43,11 +43,11 @@ const fetchAndDisplayUser = () => {
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">패스워드</label>
-            <input type="password" id="edit-pw" required>
+            <input type="password" id="edit-pw" value="password">
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">패스워드 확인</label>
-            <input type="password" id="edit-pw-confirm" required>
+            <input type="password" id="edit-pw-confirm" value="password">
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">닉네임</label>
