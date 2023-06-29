@@ -136,7 +136,6 @@ input:read-only {
   width: 300px;
   height: 350px;
   margin-bottom: 30px;
-  background-color: #ddd;
 }
 
 .required-icon::before {

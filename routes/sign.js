@@ -10,7 +10,7 @@ router.post('/signup', upload, async (req, res) => {
 
   let profilepicture = req.file;
   if (profilepicture) {
-    profilepicture = path.join('uploads', req.file.filename);
+    profilepicture = path.join('img-server', req.file.filename);
   }
   const regExp1 = /^[a-zA-z0-9]{3,12}$/;
   const regExp2 = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
