@@ -44,11 +44,11 @@ const fetchAndDisplayUser = () => {
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">패스워드</label>
-            <input type="password" id="edit-pw" value="password">
+            <input type="password" id="edit-pw" value="${password}">
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">패스워드 확인</label>
-            <input type="password" id="edit-pw-confirm" value="password">
+            <input type="password" id="edit-pw-confirm" value="${password}">
           </div>
           <div class="input-wrap">
             <label for="" class="required-icon">닉네임</label>
@@ -75,7 +75,7 @@ const fetchAndDisplayUser = () => {
           <button id="edit-submit" class="btn-primary btn-full">수정하기</button>
         </div>
       </div>
-      <div>
+      <div class="profile-wrap">
         <div class="profile-img-wrap">${profileImage}</div>
         <input type="file" id="profile-img">
       </div>

@@ -9,7 +9,7 @@ router.get('/userInfo', authMiddleware, async (req, res) => {
   const userid = res.locals.user.userid;
 
   const user = await Users.findOne({
-    attributes: ['email', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
+    attributes: ['email', 'password', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
     where: { userid },
   });
 

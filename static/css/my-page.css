@@ -4,7 +4,11 @@ main {
 }
 
 h2 {
-  margin-bottom: 100px;
+  margin-bottom: 70px;
+}
+
+h2::before {
+  content: '';
 }
 
 .flex-inner {
@@ -37,7 +41,9 @@ h2 {
 .input-wrap {
   display: flex;
   align-items: center;
+  min-width: 310px;
   margin-top: 15px;
+  font-size: 18px;
   color: #333;
 }
 
@@ -52,7 +58,7 @@ h2 {
 .input-wrap label {
   flex-shrink: 0;
   width: 155px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -99,7 +105,7 @@ input:read-only {
 
 .btn-full {
   width: 100%;
-  height: 50px;
+  height: 55px;
   margin-top: 30px;
 }
 
@@ -140,7 +146,8 @@ input:read-only {
 .profile-img-wrap {
   width: 300px;
   height: 350px;
-  margin-bottom: 30px;
+  margin: 0 auto 50px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .required-icon::before {
@@ -173,5 +180,5 @@ input:read-only {
 
 .btn-wrap .btn-primary {
   flex: 1;
-  height: 45px;
+  height: 55px;
 }

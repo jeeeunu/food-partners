@@ -35,33 +35,35 @@ const fetchAndDisplayUser = () => {
       genderData = `👩‍🦰 여자 `;
     }
     userInformation.innerHTML = `
-      <h2>마이 페이지</h2>
-      <div class="profile-img-wrap">
-        ${profileImage}
+      <h2>"${nickname}" <small>님의 마이 페이지</small></h2>
+      <div class="center-inner">
+        <div class="profile-img-wrap">
+          ${profileImage}
+        </div>
+        <div class="input-wrap">
+          <label for="">이메일(ID)</label>
+          <p>${email}</p>
+        </div>
+        <div class="input-wrap">
+          <label for="">닉네임</label>
+          <p>${nickname}</p>
+        </div>
+        <div class="input-wrap">
+          <label for="">생년월일</label>
+          <p>${birth}</p>
+        </div>
+        <div class="input-wrap">
+          <label for="">한 줄 소개</label>
+          <p>${introduce}</p>
+        </div>
+        <div class="input-wrap">
+          <label for="">성별</label>
+          <p>${genderData}</p>
+        </div>
+        <div class="input-wrap">
+        <label for="">주소</label>
+        <p>${address}</p>
       </div>
-      <div class="input-wrap">
-        <label for="">이메일(ID)</label>
-        <p>${email}</p>
-      </div>
-      <div class="input-wrap">
-        <label for="">닉네임</label>
-        <p>${nickname}</p>
-      </div>
-      <div class="input-wrap">
-        <label for="">생년월일</label>
-        <p>${birth}</p>
-      </div>
-      <div class="input-wrap">
-        <label for="">한 줄 소개</label>
-        <p>${introduce}</p>
-      </div>
-      <div class="input-wrap">
-        <label for="">성별</label>
-        <p>${genderData}</p>
-      </div>
-      <div class="input-wrap">
-      <label for="">주소</label>
-      <p>${address}</p>
     </div>
       <a href="../index.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
       <div class="btn-wrap">
@@ -92,16 +94,19 @@ document.addEventListener('click', async (event) => {
   // 회원 탈퇴하기
   if (event.target.matches('#btn-delete')) {
     console.log('hey')
-    try {
-      const response = await fetch('/api/userInfo', {
-        method: 'DELETE',
-      });
+    const confirmDelete = confirm("정말로 탈퇴하시겠습니까?")
+    if (confirmDelete === true) {
+      try {
+        const response = await fetch('/api/userInfo', {
+          method: 'DELETE',
+        });
 
-      const data = await response.json();
-      alert('탈퇴처리 되었습니다 감사합니다.');
-      window.location.href = '/';
-    } catch (error) {
-      alert('삭제에 실패했습니다. 다시 시도해주세요.');
+        const data = await response.json();
+        alert('탈퇴처리 되었습니다 감사합니다.');
+        window.location.href = '/';
+      } catch (error) {
+        alert('삭제에 실패했습니다. 다시 시도해주세요.');
+      }
     }
   }
 
