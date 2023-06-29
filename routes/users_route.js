@@ -77,3 +77,7 @@ router.put('/users/:userId', authMiddleware, upload, async (req, res) => {
     res.json({ success: 'false', errorMessage: '오류가 발생했습니다.' });
   }
 });
+
+router.delete('/users/:userId', authMiddleware, async (req, res) => {});
+
+module.exports = router;
