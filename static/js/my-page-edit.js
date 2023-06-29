@@ -61,7 +61,7 @@ const fetchAndDisplayUser = () => {
             <label for="">주소</label>
             <input type="text" id="edit-address" value="${address}">
           </div>
-          <button id="edit-submit" class="btn-primary btn-full">회원가입</button>
+          <button id="edit-submit" class="btn-primary btn-full">수정하기</button>
         </div>
       </div>
       <div>
@@ -114,7 +114,7 @@ userInformation.addEventListener("click", async (event) => {
 
       const data = await response.json();
       alert("수정되었습니다");
-      window.location.href = "/html/sign-in.html";
+      window.location.href = "/";
     } catch (error) {
       alert("수정에 실패했습니다. 다시 시도해주세요.");
     }
