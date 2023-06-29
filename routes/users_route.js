@@ -3,6 +3,7 @@ const router = express.Router();
 const { Users } = require('../models');
 const authMiddleware = require('../middlewares/auth-middleware.js');
 const upload = require('../middlewares/uploadFile.js');
+const path = require('path');
 
 router.get('/userInfo', authMiddleware, async (req, res) => {
   const userid = res.locals.user.userid;
