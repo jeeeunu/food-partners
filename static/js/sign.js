@@ -75,7 +75,6 @@ if (btnSignInSubmit !== null) {
     const password = document.querySelector("#sign-in-pw").value;
 
     try {
-      console.log("찍는중")
       // API
       const response = await fetch("/api/login", {
         method: "POST",
@@ -92,6 +91,8 @@ if (btnSignInSubmit !== null) {
       if (response.ok) {
         const token = data.token;
         console.log(`${token}, 로그인 성공"`);
+        alert("로그인 되었습니다.")
+        window.location.href = "/"
       } else {
         const errorMessage = data.errorMessage;
         console.log(errorMessage);
