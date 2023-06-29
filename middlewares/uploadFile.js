@@ -2,7 +2,7 @@ const multer = require('multer');
 
 // 이미지 받았을 때 필터링
 const imageFilter = (req, file, cb) => {
-  if (!file.originalname.match(/\.(jpg|jpeg|PNG|gif)$/)) {
+  if (!file.originalname.match(/\.(jpg|jpeg|PNG|gif|png)$/)) {
     return cb(new Error('Only image files are allowed!'));
   }
   cb(null, true);

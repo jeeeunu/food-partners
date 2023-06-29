@@ -12,8 +12,8 @@ router.post('/signup', upload, async (req, res) => {
   if (profilepicture) {
     profilepicture = path.join('img-server', req.file.filename);
   }
-  const regExp1 = /^[a-zA-z0-9]{3,12}$/;
-  const regExp2 = /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
+  const regExp1 = /^[가-힣a-zA-z0-9]{3,12}$/;
+  const regExp2 = /^[가-힣A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
   if (!regExp1.test(nickname)) {
     res.status(400).json({
       errorMessage: '닉네임은 영문 대소문자와 숫자 3~12자리로 입력해주세요.',

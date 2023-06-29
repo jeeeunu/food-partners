@@ -1,4 +1,4 @@
-console.log("my-page-edit.js 연결")
+console.log('my-page-edit.js 연결');
 function fetchData(url, options) {
   return fetch(url, options)
     .then((response) => {
@@ -27,13 +27,13 @@ const fetchAndDisplayUser = () => {
     }
 
     // 성별
-    let genderData = ''
+    let genderData = '';
     if (gender === 'M') {
       genderData = ` <input type="radio" id="M" name="gender" checked><label for="M">남</label>
-      <input type="radio" id="F" name="gender"><label for="F">여</label>`
+      <input type="radio" id="F" name="gender"><label for="F">여</label>`;
     } else if (gender === 'F') {
       genderData = ` <input type="radio" id="M" name="gender"><label for="M">남</label>
-      <input type="radio" id="F" name="gender" checked><label for="F">여</label>`
+      <input type="radio" id="F" name="gender" checked><label for="F">여</label>`;
     }
     userInformation.innerHTML = `
         <div class="form-inner">
@@ -84,49 +84,48 @@ const fetchAndDisplayUser = () => {
 
 window.onload = fetchAndDisplayUser;
 
-
 // 마이페이지 회원정보 수정
 const userInformation = document.querySelector('#my-page-edit-form');
 
-userInformation.addEventListener("click", async (event) => {
+userInformation.addEventListener('click', async (event) => {
   const target = event.target;
 
   // 수정 버튼이 클릭된 경우 처리
-  if (target.matches("#edit-submit")) {
-    console.log("찍는중");
+  if (target.matches('#edit-submit')) {
+    console.log('찍는중');
 
-    const password = document.querySelector("#edit-pw").value;
-    const confirm = document.querySelector("#edit-pw-confirm").value;
-    const nickname = document.querySelector("#edit-nickname").value;
-    const birth = document.querySelector("#edit-birth").value;
-    const introduce = document.querySelector("#edit-info").value;
+    const password = document.querySelector('#edit-pw').value;
+    const confirm = document.querySelector('#edit-pw-confirm').value;
+    const nickname = document.querySelector('#edit-nickname').value;
+    const birth = document.querySelector('#edit-birth').value;
+    const introduce = document.querySelector('#edit-info').value;
     const genderInput = document.querySelector('input[type="radio"][name="gender"]:checked');
     const gender = genderInput ? genderInput.id : null;
-    const address = document.querySelector("#edit-address").value;
+    const address = document.querySelector('#edit-address').value;
     const profilePictureFile = document.querySelector('#profile-img').files[0];
 
     const formData = new FormData();
-    formData.append("profilePicture", profilePictureFile);
+    formData.append('profilePicture', profilePictureFile);
     // formData.append("email", email);
-    formData.append("nickname", nickname);
-    formData.append("password", password);
-    formData.append("confirm", confirm);
-    formData.append("birth", birth);
-    formData.append("introduce", introduce);
-    formData.append("gender", gender);
-    formData.append("address", address);
+    formData.append('nickname', nickname);
+    formData.append('password', password);
+    formData.append('confirm', confirm);
+    formData.append('birth', birth);
+    formData.append('introduce', introduce);
+    formData.append('gender', gender);
+    formData.append('address', address);
 
     try {
-      const response = await fetch("/api/userInfo", {
-        method: "PUT",
-        body: formData
+      const response = await fetch('/api/userInfo', {
+        method: 'PUT',
+        body: formData,
       });
 
       const data = await response.json();
-      alert("수정되었습니다");
-      window.location.href = "/";
+      alert('수정되었습니다');
+      window.location.href = '/';
     } catch (error) {
-      alert("수정에 실패했습니다. 다시 시도해주세요.");
+      alert('수정에 실패했습니다. 다시 시도해주세요.');
     }
   }
 });
