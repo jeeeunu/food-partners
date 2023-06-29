@@ -12,7 +12,6 @@ function fetchData(url, options) {
     });
 }
 
-
 // 마이페이지 회원정보 조회
 const fetchAndDisplayUser = () => {
   fetchData('/api/userInfo').then((data) => {
@@ -54,10 +53,25 @@ const fetchAndDisplayUser = () => {
       <a href="../index.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
       <div class="btn-wrap">
         <a href="./my-page-edit.html" class="btn-primary border">회원 수정</a>
-        <a href="" class="btn-primary border">회원 탈퇴</a>
+        <button id="btn-logout" class="btn-primary border">로그아웃</button>
       </div>
     `;
   });
 };
 
 window.onload = fetchAndDisplayUser;
+
+// 로그아웃
+document.addEventListener("click", function (event) {
+  if (event.target && event.target.id === "btn-logout") {
+    try {
+      const response = fetch("/api/logout", {
+        method: "DELETE",
+      });
+      alert("로그아웃이 완료되었습니다.");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("로그아웃 오류:", error);
+    }
+  }
+});

@@ -112,10 +112,6 @@ userInformation.addEventListener("click", async (event) => {
         body: formData
       });
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
       const data = await response.json();
       alert("수정되었습니다");
       window.location.href = "/html/sign-in.html";
