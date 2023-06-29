@@ -1,20 +1,8 @@
-console.log("my-page-detail.js 연결")
-function fetchData(url, options) {
-  return fetch(url, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('마이페이지 회원정보조회 실패');
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
+import { fetchData } from './utils.js';
 
 // 마이페이지 회원정보 조회
 const fetchAndDisplayUser = () => {
-  fetchData('/api/userInfo').then((data) => {
+  fetchData('/api/userInfo', { method: "GET" }).then((data) => {
     const userInformation = document.querySelector('#my-page-form');
     userInformation.innerHTML = '';
     const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
@@ -102,8 +90,14 @@ document.addEventListener('click', async (event) => {
         });
 
         const data = await response.json();
-        alert('탈퇴처리 되었습니다 감사합니다.');
-        window.location.href = '/';
+        if (response.ok) {
+          alert('탈퇴처리 되었습니다 감사합니다.');
+          window.location.href = '/';
+        } else {
+          const { errorMessage } = data;
+          alert(errorMessage);
+        }
+
       } catch (error) {
         alert('삭제에 실패했습니다. 다시 시도해주세요.');
       }

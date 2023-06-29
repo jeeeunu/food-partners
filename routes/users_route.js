@@ -26,7 +26,7 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
   const regExp2 = /^[가-힣A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{4,16}$/;
   if (!regExp1.test(nickname)) {
     res.status(400).json({
-      errorMessage: '닉네임은 영문 대소문자와 숫자 3~12자리로 입력해주세요.',
+      errorMessage: '닉네임은 3~12자리로 입력해주세요.',
     });
     if (profilepicture) {
       fs.unlinkSync('./img-server/' + req.file.filename);
