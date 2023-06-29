@@ -10,7 +10,6 @@ router.post('/login', async (req, res) => {
     res.status(400).json({ errorMessage: '회원 정보가 동일하지 않습니다. 다시 시도해주세요.' });
     return;
   }
-  console.log(user.userid);
   const token = jwt.sign({ userid: user.userid }, 'customized-secret-key');
   res.cookie('Authorization', `Bearer ${token}`);
   res.status(200).json({ token });

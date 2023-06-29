@@ -18,7 +18,9 @@ router.post('/signup', upload, async (req, res) => {
     res.status(400).json({
       errorMessage: '닉네임은 영문 대소문자와 숫자 3~12자리로 입력해주세요.',
     });
-    fs.unlinkSync('./img-server/' + req.file.filename);
+    if (profilepicture) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
     return;
   }
 
@@ -26,7 +28,9 @@ router.post('/signup', upload, async (req, res) => {
     res.status(400).json({
       errorMessage: '비밀번호는 영문 대소문자와 특수문자로 이루어진 4~16자리로 입력해주세요.',
     });
-    fs.unlinkSync('./img-server/' + req.file.filename);
+    if (profilepicture) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
     return;
   }
 
@@ -34,7 +38,9 @@ router.post('/signup', upload, async (req, res) => {
     res.status(400).json({
       errorMessage: '패스워드가 패스워드 확인란과 다릅니다.',
     });
-    fs.unlinkSync('./img-server/' + req.file.filename);
+    if (profilepicture) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
     return;
   }
 
@@ -45,7 +51,9 @@ router.post('/signup', upload, async (req, res) => {
     res.status(400).json({
       errorMessage: '중복된 닉네임입니다.',
     });
-    fs.unlinkSync('./img-server/' + req.file.filename);
+    if (profilepicture) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
     return;
   }
 
@@ -53,7 +61,9 @@ router.post('/signup', upload, async (req, res) => {
     res.status(400).json({
       errorMessage: '이미 가입된 이메일입니다.',
     });
-    fs.unlinkSync('./img-server/' + req.file.filename);
+    if (profilepicture) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
     return;
   }
 
