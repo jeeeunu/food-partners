@@ -2,11 +2,9 @@
 const btnPostSubmit = document.querySelector('#create-post-submit');
 if (btnPostSubmit !== null) {
   btnPostSubmit.addEventListener('click', async () => {
-    const postImgFile = document.querySelector('#create-post-img').files[0];
+    const postImgFile = document.querySelector('#post-upload-img').files[0];
     const postTitle = document.querySelector('#create-post-title').value;
     const postContent = document.querySelector('#create-post-content').value;
-
-    console.log(postImgFile, postTitle, postContent);
 
     const formData = new FormData();
     formData.append('profilePicture', postImgFile);
@@ -41,12 +39,27 @@ async function getPosts() {
       headers: {},
     });
     const data = await response.json();
-    console.log('data ', data);
     if (response.ok) {
-      const posts = data.posts;
-      // 게시물 목록을 받아와서 원하는 동작을 수행할 수 있습니다.
-      // 예: 게시물 카드 생성, 리스트 표시 등
-      createCards(posts);
+      const posts = data.data;
+
+      const cardList = document.querySelector('#card-list');
+      cardList.innerHTML = ''; // 카드 담는 리스트 비우기
+      // 데이터 map 돌려서 html 템플릿 담음
+      const htmlArray = posts.map((post) => {
+        const { img: postImg, title: title, content: content } = post; // 프로퍼티 확인 필요
+        return `<ol class="card">
+              <ul>
+                ${postImg}
+              </ul>
+              <ul>
+                ${title}
+              </ul>
+              <ul>
+                ${content}
+              </ul>
+            </ol>`;
+      });
+      cardList.innerHTML = htmlArray.join(''); // 데이터 담은 htmlArray를 문자열로 합쳐서 card-list에 넣음
     } else {
       const errorMessage = data.message;
       console.log(errorMessage);
@@ -55,9 +68,6 @@ async function getPosts() {
     console.error(error);
   }
 }
-
-// 내 게시물 조회
-
 // 게시글 삭제
 // const btnPostDelete = document.querySelector('#detail-page-delete');
 
@@ -67,25 +77,3 @@ async function getPosts() {
 //   method: 'POST',
 //   body: fetchData,
 // });
-
-// 카드 생성
-const createCards = (posts) => {
-  const cardList = document.querySelector('#card-list');
-  cardList.innerHTML = ''; // 카드 담는 리스트 비우기
-  // 데이터 map 돌려서 html 템플릿 담음
-  const htmlArray = posts.map((post) => {
-    const { img: postImg, title: postTitle, content: postContent } = post; // 프로퍼티 확인 필요
-    return `<ol class="card">
-              <ul>
-                ${postImg}
-              </ul>
-              <ul>
-                ${title}
-              </ul>
-              <ul>
-                ${postContent}
-              </ul>
-            </ol>`;
-  });
-  cardList.innerHTML = htmlArray.join(''); // 데이터 담은 htmlArray를 문자열로 합쳐서 card-list에 넣음
-};

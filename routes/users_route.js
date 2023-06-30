@@ -59,7 +59,7 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
 
   if (existNickname && existNickname.nickname !== nickname) {
     res.status(400).json({
-      errorMessage: '중복된 닉네임입니다.',
+      errorMessage: '중복된 닉네임입니다!!',
     });
     if (profilepicture) {
       fs.unlinkSync('./img-server/' + req.file.filename);

@@ -44,4 +44,7 @@ document.addEventListener('change', function (event) {
   if (event.target && event.target.matches('#profile-img')) {
     setThumbnail(event);
   }
+  if (event.target && event.target.matches('#post-upload-img')) {
+    setThumbnail(event);
+  }
 });

@@ -34,15 +34,17 @@
     <!-- main -->
     <main>
       <div class="create-post-box basic-inner">
-        <div class="create-post-img">
-          <img src="https://via.placeholder.com/400x400.jpg" alt="임시 이미지" />
+        <div class="create-post-img-box">
+          <div id="create-post-img" class="profile-img-wrap">
+            <img src="https://via.placeholder.com/400x400.jpg" alt="임시 이미지" />
+          </div>
         </div>
         <div class="img-upload-btn">
-          <label for="create-post-img" class="basic-btn">파일 업로드
-          <input id="create-post-img" type="file" style="display: none;"/>
+          <label for="post-upload-img" class="basic-btn">파일 업로드
+          <input id="post-upload-img" type="file" style="display: none;"/>
         </div>
         <div class="input-wrap">
-          <label for="">제목</label>
+          <label for="">제목 : </label>
           <input type="text" id="create-post-title" placeholder="제목" required />
         </div>
         <div class="input-wrap create-post-content">
