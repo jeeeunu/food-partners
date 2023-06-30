@@ -7,14 +7,13 @@ const port = 3018;
 const loginRouter = require('./routes/login.js');
 const signRouter = require('./routes/sign.js');
 const logoutRouter = require('./routes/logout.js');
-const postsRouter = require('./routes/test-post.js');
+const postsRouter = require('./routes/post.js');
 const userRouter = require('./routes/users_route.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/api', [loginRouter, signRouter, logoutRouter, userRouter]);
-app.use('/posts', postsRouter);
+app.use('/api', [loginRouter, signRouter, logoutRouter, userRouter, postsRouter]);
 app.use(express.static('./static'));
 // 이미지 파일
 app.use('/img-server', express.static(path.join(__dirname, 'img-server')));

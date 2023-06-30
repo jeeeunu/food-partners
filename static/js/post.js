@@ -14,7 +14,7 @@ if (btnPostSubmit !== null) {
     formData.append('content', postContent);
 
     try {
-      const response = await fetch('/posts', {
+      const response = await fetch('/api/posts', {
         method: 'POST',
         body: formData,
       });
@@ -36,11 +36,9 @@ if (btnPostSubmit !== null) {
 getPosts();
 async function getPosts() {
   try {
-    const response = await fetch('/posts', {
+    const response = await fetch('/api/posts', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {},
     });
     const data = await response.json();
     if (response.ok) {
@@ -81,7 +79,7 @@ const createCards = (posts) => {
                 ${postImg}
               </ul>
               <ul>
-                ${postTitle}
+                ${title}
               </ul>
               <ul>
                 ${postContent}

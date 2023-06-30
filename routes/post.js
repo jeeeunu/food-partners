@@ -3,13 +3,13 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const authMiddleware = require('../middlewares/auth-middleware.js');
-const { Posts } = require('../models');
-const { Users } = require('../models');
+const { Posts } = require('../models/index.js');
+const { Users } = require('../models/index.js');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
 
 // POST
-router.post('/', authMiddleware, upload, async (req, res) => {
+router.post('/posts', authMiddleware, upload, async (req, res) => {
   const { title, content } = req.body;
   const userid = res.locals.user.userid;
   let profilepicture = req.file;
@@ -31,7 +31,7 @@ router.post('/', authMiddleware, upload, async (req, res) => {
 });
 
 // GET
-router.get('/', async (req, res) => {
+router.get('/posts', async (req, res) => {
   const posts = await Posts.findAll({
     attributes: ['title', 'createdAt', 'updatedAt'],
     order: [['createdAt', 'DESC']],
@@ -50,7 +50,7 @@ router.get('/myPost', authMiddleware, async (req, res) => {
   });
 });
 
-router.get('/:postId', async (req, res) => {
+router.get('/posts/:postId', async (req, res) => {
   const { postId } = req.params;
   const post = await Posts.findOne({
     attributes: ['postId', 'title', 'content', 'createdAt', 'updatedAt'],
@@ -60,7 +60,7 @@ router.get('/:postId', async (req, res) => {
   return res.status(200).json({ data: post });
 });
 
-router.delete('/:postId', async (req, res) => {
+router.delete('/posts/:postId', async (req, res) => {
   const { postId } = req.params;
 
   const post = await Posts.findOne({ where: { postId } });
@@ -71,7 +71,7 @@ router.delete('/:postId', async (req, res) => {
   return res.status(200).json({ data: '게시글이 삭제되었습니다.' });
 });
 
-router.put('/:postId', async (req, res) => {
+router.put('/posts/:postId', async (req, res) => {
   const { postId } = req.params;
   const { title, content } = req.body;
   const updatedAt = Date();
