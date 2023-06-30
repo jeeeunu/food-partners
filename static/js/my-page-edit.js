@@ -87,7 +87,7 @@ document.addEventListener('click', async (event) => {
     const gender = genderInput ? genderInput.id : null;
     const address = document.querySelector('#edit-address').value;
     const profilePictureFile = document.querySelector('#profile-img').files[0];
-
+    console.log(profilePictureFile);
     const formData = new FormData();
     formData.append('profilePicture', profilePictureFile);
     // formData.append("email", email);
@@ -98,7 +98,7 @@ document.addEventListener('click', async (event) => {
     formData.append('introduce', introduce);
     formData.append('gender', gender);
     formData.append('address', address);
-
+    console.log(formData);
     try {
       const response = await fetch('/api/userInfo', {
         method: 'PUT',

@@ -29,6 +29,10 @@ main {
   white-space: nowrap;
 }
 
+.basic-btn:hover {
+  cursor: pointer;
+}
+
 /* 카드 컨테이너 */
 .card-container {
   color: #362f29;
@@ -110,11 +114,13 @@ img:hover {
   flex-grow: 1;
 }
 
-.create-post-img {
+.create-post-img-box {
   width: 400px;
   height: 400px;
 
   margin: auto;
+
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .img-upload-btn {
@@ -142,20 +148,6 @@ img:hover {
 
 .create-post-title input {
   width: 90%;
-}
-
-.create-post-content {
-  /* width: 800px;
-  min-height: 150px;
-  height: auto;
-
-  margin: 20px auto;
-  padding: 10px;
-
-  border: 1px solid #ddd;
-  border-radius: 10px;
-
-  font-size: 14px; */
 }
 
 .create-post-btn {
