@@ -43,13 +43,6 @@ header .title-box {
   font-size: 24px;
 }
 
-header .title-box::after {
-  content: '🍍';
-  display: block;
-  padding-left: 5px;
-  font-size: 33px;
-}
-
 header div {
   display: flex;
 }
@@ -80,6 +73,7 @@ header a span {
 
 h2 {
   margin-bottom: 70px;
+  font-size: 32px;
 }
 
 .basic-inner {
