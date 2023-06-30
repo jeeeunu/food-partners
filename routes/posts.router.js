@@ -6,10 +6,12 @@ const { Op } = require('sequelize');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
 const { Users } = require('../models');
+const path = require('path');
 
 router.post('/posts', authMiddleware, upload, async (req, res) => {
   const { title, content } = req.body;
-  let thumbnail = req.file;
+  let profilepicture = req.file;
+  let thumbnail = profilepicture;
   if (thumbnail) {
     thumbnail = path.join('img-server', req.file.filename);
   }
