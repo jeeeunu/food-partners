@@ -15,12 +15,12 @@ if (document.cookie.includes('Authorization')) {
   console.log('게스트 입니다.');
   if (location.pathname === '/') {
     document.querySelector('.right-btn-box').innerHTML = `
-      <a href="html/create-post.html">작성</a>
+      <a href="html/create-post-page.html">작성</a>
       <a href="html/sign-in.html" class="btn-login">로그인</a>
     `;
   } else {
     document.querySelector('.right-btn-box').innerHTML = `
-      <a href="create-post.html">작성</a>
+      <a href="create-post-page.html">작성</a>
       <a href="sign-in.html" class="btn-login">로그인</a>
     `;
   }

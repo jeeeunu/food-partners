@@ -9,12 +9,9 @@ const fs = require('fs');
 router.post('/', upload, async (req, res) => {
   const { title, thumbnail, content } = req.body;
   const post = await Posts.create({
-    postId: postId,
     title: title,
     thumbnail: thumbnail,
     content: content,
-    createdAt: Date(),
-    updatedAt: Date(),
   });
   res.status(201).json({ data: post });
 });
