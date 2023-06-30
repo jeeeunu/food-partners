@@ -1,32 +1,41 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const authMiddleware = require('../middlewares/auth-middleware.js');
-const { Posts } = require('../models/index.js');
-const { Users } = require('../models/index.js');
+const authMiddleware = require('../middlewares/auth-middleware');
+const { Posts } = require('../models');
+const { Op } = require('sequelize');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
+const { Users } = require('../models');
 
-// POST
 router.post('/posts', authMiddleware, upload, async (req, res) => {
   const { title, content } = req.body;
-  const userid = res.locals.user.userid;
-  let profilepicture = req.file;
+  let thumbnail = req.file;
+  if (thumbnail) {
+    thumbnail = path.join('img-server', req.file.filename);
+  }
+  const UserId = res.locals.user.userid;
 
-  if (profilepicture) {
-    profilepicture = path.join('img-server', req.file.filename);
+  if (!title) {
+    res.status(400).json({
+      errorMessage: '제목을 작성해주세요.',
+    });
+    if (thumbnail) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
+    return;
   }
 
-  const post = await Posts.create({
-    userid: userid,
-    title: title,
-    thumbnail: profilepicture,
-    content: content,
-    createdAt: Date(),
-    updatedAt: Date(),
-  });
+  if (!content) {
+    res.status(400).json({
+      errorMessage: '내용을 작성해주세요.',
+    });
+    if (thumbnail) {
+      fs.unlinkSync('./img-server/' + req.file.filename);
+    }
+    return;
+  }
 
+  const post = await Posts.create({ title, UserId, thumbnail, content });
   res.status(201).json({ data: post });
 });
 
@@ -44,7 +53,6 @@ router.get('/posts', async (req, res) => {
   return res.status(200).json({ data: posts });
 });
 
-// GET
 router.get('/posts/:postId', async (req, res) => {
   const { postId } = req.params;
   const post = await Posts.findOne({
@@ -54,7 +62,6 @@ router.get('/posts/:postId', async (req, res) => {
   return res.status(200).json({ data: post });
 });
 
-// DELETE
 router.delete('/posts/:postId', authMiddleware, async (req, res) => {
   const { postId } = req.params;
   const UserId = res.locals.user.userid;
@@ -72,7 +79,6 @@ router.delete('/posts/:postId', authMiddleware, async (req, res) => {
   return res.status(200).json({ data: '게시글이 삭제되었습니다.' });
 });
 
-// PUT
 router.put('/posts/:postId', authMiddleware, upload, async (req, res) => {
   const { postId } = req.params;
   const { title, content } = req.body;
