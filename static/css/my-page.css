@@ -1,6 +1,6 @@
 main {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 h2::before {
