@@ -34,8 +34,11 @@ main {
 .card-container {
   color: #362f29;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  width: 1150px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  padding: 0 10px;
 }
 
 .card {
@@ -156,7 +159,6 @@ img:hover {
 
   font-size: 14px; */
 }
-
 
 .create-post-btn {
   width: 800px;
