@@ -41,6 +41,7 @@ async function getPosts() {
       headers: {},
     });
     const data = await response.json();
+    console.log('data ', data);
     if (response.ok) {
       const posts = data.posts;
       // 게시물 목록을 받아와서 원하는 동작을 수행할 수 있습니다.
