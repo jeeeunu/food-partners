@@ -2,7 +2,7 @@ import { fetchData } from './utils.js';
 
 // 마이페이지 회원정보 조회
 const fetchAndDisplayUser = () => {
-  fetchData('/api/userInfo', { method: "GET" }).then((data) => {
+  fetchData('/api/userInfo', { method: 'GET' }).then((data) => {
     const userInformation = document.querySelector('#my-page-form');
     userInformation.innerHTML = '';
     const { email, profilepicture, nickname, birth, gender, address, introduce } = data.result;
@@ -53,7 +53,7 @@ const fetchAndDisplayUser = () => {
         <p>${address}</p>
       </div>
     </div>
-      <a href="../index.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
+      <a href="my-posts.html" class="btn-primary btn-full">내 작성 글 보러가기</a>
       <div class="btn-wrap">
         <a href="./my-page-edit.html" class="btn-primary border">회원 수정</a>
         <button id="btn-logout" class="btn-primary border">로그아웃</button>
@@ -67,22 +67,22 @@ window.onload = fetchAndDisplayUser;
 
 // 로그아웃
 document.addEventListener('click', async (event) => {
-  if (event.target.id === "btn-logout") {
+  if (event.target.id === 'btn-logout') {
     try {
-      const response = fetch("/api/logout", {
-        method: "DELETE",
+      const response = fetch('/api/logout', {
+        method: 'DELETE',
       });
-      alert("로그아웃이 완료되었습니다.");
-      window.location.href = "/";
+      alert('로그아웃이 완료되었습니다.');
+      window.location.href = '/';
     } catch (error) {
-      console.error("로그아웃 오류:", error);
+      console.error('로그아웃 오류:', error);
     }
   }
 
   // 회원 탈퇴하기
   if (event.target.matches('#btn-delete')) {
-    console.log('hey')
-    const confirmDelete = confirm("정말로 탈퇴하시겠습니까?")
+    console.log('hey');
+    const confirmDelete = confirm('정말로 탈퇴하시겠습니까?');
     if (confirmDelete === true) {
       try {
         const response = await fetch('/api/userInfo', {
@@ -97,12 +97,9 @@ document.addEventListener('click', async (event) => {
           const { errorMessage } = data;
           alert(errorMessage);
         }
-
       } catch (error) {
         alert('삭제에 실패했습니다. 다시 시도해주세요.');
       }
     }
   }
-
 });
-
