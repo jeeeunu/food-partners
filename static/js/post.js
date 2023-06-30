@@ -1,5 +1,6 @@
 // 게시글 작성
 const btnPostSubmit = document.querySelector('#create-post-submit');
+const btnPostDelete = document.querySelector('#detail-page-delete');
 if (btnPostSubmit !== null) {
   btnPostSubmit.addEventListener('click', async () => {
     const postImgFile = document.querySelector('#post-upload-img').files[0];
@@ -70,13 +71,39 @@ async function getPosts() {
 }
 
 getPosts();
+async function getDetail(postId) {
+  try {
+    const response = await fetch('/api/posts/postId', {
+      method : 'GET',
+      headers: {},
+    })
+    const data = await response.json()
+    const detailposts = data.data
+  }
+}
+
+
+
 
 // 게시글 삭제
-// const btnPostDelete = document.querySelector('#detail-page-delete');
+async function postDelete(postId) {
+  const confirmDelete = confirm('정말로 삭제하시겠습니까?');
+  if (confirmDelete === true) {
+    try {
+      const response = await fetch(`/posts/${postId}`, {
+        method: 'DELETE',
+      });
 
-// const fetchData = { data: 'fetch에서 받은 데이터' };
-
-// fetch('/api/posts', {
-//   method: 'POST',
-//   body: fetchData,
-// });
+      const data = await response.json();
+      if (response.ok) {
+        alert('삭제처리 되었습니다 감사합니다.');
+        window.location.href = '/';
+      } else {
+        const { errorMessage } = data;
+        alert(errorMessage);
+      }
+    } catch (error) {
+      alert('삭제에 실패했습니다. 다시 시도해주세요.');
+    }
+  }
+}
