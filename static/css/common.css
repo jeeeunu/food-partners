@@ -4,6 +4,7 @@
 
 body {
   min-width: 1150px;
+  background-color: #f9f9f9;
 }
 
 main {
@@ -19,6 +20,7 @@ header {
 
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #777;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -39,16 +41,15 @@ header .title-box {
 
   /* min-width: 50%; */
   justify-content: center;
-
-  font-size: 24px;
-}
-
-header .title-box::after {
-  content: '🍍';
-  display: block;
-  padding-left: 5px;
+  font-family: 'Kablammo', cursive;
   font-size: 33px;
 }
+
+/* header .title-box::after {
+  content: '🐷';
+  padding-left: 10px;
+  font-size: 35px;
+} */
 
 header div {
   display: flex;
@@ -57,7 +58,7 @@ header div {
 header button,
 header a {
   flex: 0 0 auto;
-  height: 50px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -79,7 +80,8 @@ header a span {
 }
 
 h2 {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
+  font-size: 22px;
 }
 
 .basic-inner {
@@ -224,12 +226,14 @@ textarea {
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 100px 5%;
+  gap: 40px 5%;
 }
 .card-item {
   width: 30%;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  background-color: #fff;
 }
 .card-item a {
   display: block;

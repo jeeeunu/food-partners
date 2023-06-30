@@ -19,7 +19,7 @@ const myPosts = () => {
       }
       const contentHtml = `
         <div class="card-item">
-          <a href="">
+          <a href="api/posts/${content.postId}">
             <div class="img-wrap">
               ${profileImage}
             </div>
