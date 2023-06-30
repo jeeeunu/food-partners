@@ -4,20 +4,19 @@ import { fetchData } from './utils.js';
 const myPosts = () => {
   fetchData('/api/myPost', { method: 'GET' }).then((response) => {
     const { data } = response;
-    const { thumbnail } = data;
+    const thumbnail = data;
     console.log(thumbnail);
     const postList = document.querySelector('.card-container');
     postList.innerHTML = '';
 
-    // 이미지
-    let profileImage = '';
-    if (thumbnail) {
-      profileImage = `<img src="/${profilepicture.replace(/\\/g, '/')}" alt="프로필 이미지">`;
-    } else {
-      profileImage = `<img src="../images/default_post_img.png" alt="기본 프로필 이미지" style="display: block; width: 40%; object-fit: contain; margin: 0 auto">`;
-    }
-
     data.forEach((content) => {
+      // 이미지
+      let profileImage = '';
+      if (content.thumbnail) {
+        profileImage = `<img src="/${content.thumbnail.replace(/\\/g, '/')}" alt="프로필 이미지">`;
+      } else {
+        profileImage = `<img src="../images/default_post_img.png" alt="기본 프로필 이미지" style="display: block; width: 40%; object-fit: contain; margin: 0 auto">`;
+      }
       const contentHtml = `
         <div class="card-item">
           <a href="">

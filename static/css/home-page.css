@@ -2,7 +2,7 @@ main {
   min-height: 100vh;
   flex-grow: 1;
 
-  padding: 30px 0;
+  /* padding: 30px 0; */
 }
 
 /* 버튼 */
@@ -37,7 +37,7 @@ main {
   width: 1150px;
   margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 5%;
   padding: 0 10px;
 }
 
