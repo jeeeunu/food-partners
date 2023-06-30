@@ -14,8 +14,8 @@ async function getPosts() {
       // 데이터 map 돌려서 html 템플릿 담음
 
       const htmlArray = posts.map((post) => {
-        const { img: postImg, title: title, content: content } = post; // 프로퍼티 확인 필요
-        return `<ol class="card">
+        const { img: postImg, title: title, content: content, postId: postId } = post; // 프로퍼티 확인 필요
+        return `<ol class="card" id="postId" value=${postId}>
               <ul>
                 ${postImg}
               </ul>
@@ -27,6 +27,7 @@ async function getPosts() {
               </ul>
             </ol>`;
       });
+
       cardList.innerHTML = htmlArray.join(''); // 데이터 담은 htmlArray를 문자열로 합쳐서 card-list에 넣음
     } else {
       const errorMessage = data.message;

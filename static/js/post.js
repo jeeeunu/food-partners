@@ -71,19 +71,6 @@ async function getPosts() {
 }
 
 getPosts();
-async function getDetail(postId) {
-  try {
-    const response = await fetch('/api/posts/postId', {
-      method : 'GET',
-      headers: {},
-    })
-    const data = await response.json()
-    const detailposts = data.data
-  }
-}
-
-
-
 
 // 게시글 삭제
 async function postDelete(postId) {
