@@ -9,9 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
+      UserId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'userid',
+        },
+        onDelete: 'CASCADE',
       },
       title: {
         allowNull: false,
