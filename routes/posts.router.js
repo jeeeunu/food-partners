@@ -3,25 +3,25 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
 const { Posts } = require('../models');
 const { Op } = require('sequelize');
-const { path } = require('path');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
 const { Users } = require('../models');
+const path = require('path');
 
 router.post('/posts', authMiddleware, upload, async (req, res) => {
   const { title, content } = req.body;
-  let profilePicture = req.file;
-  const UserId = res.locals.user.userid;
-  console.log(profilePicture);
-  if (profilePicture) {
-    profilePicture = path.join('img-server', req.file);
+  let profilepicture = req.file;
+  let thumbnail = profilepicture;
+  if (thumbnail) {
+    thumbnail = path.join('img-server', req.file.filename);
   }
+  const UserId = res.locals.user.userid;
 
   if (!title) {
     res.status(400).json({
       errorMessage: '제목을 작성해주세요.',
     });
-    if (profilePicture) {
+    if (thumbnail) {
       fs.unlinkSync('./img-server/' + req.file.filename);
     }
     return;
@@ -36,8 +36,6 @@ router.post('/posts', authMiddleware, upload, async (req, res) => {
     }
     return;
   }
-
-  let thumbnail = profilePicture;
 
   const post = await Posts.create({ title, UserId, thumbnail, content });
   res.status(201).json({ data: post });
