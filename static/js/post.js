@@ -14,7 +14,7 @@ if (btnPostSubmit !== null) {
     formData.append('postContent', postContent);
 
     try {
-      const response = await fetch('/posts', {
+      const response = await fetch('/api/posts', {
         method: 'POST',
         body: formData,
       });
@@ -36,7 +36,7 @@ if (btnPostSubmit !== null) {
 getPosts();
 async function getPosts() {
   try {
-    const response = await fetch('/posts', {
+    const response = await fetch('/api/posts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

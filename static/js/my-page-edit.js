@@ -1,8 +1,8 @@
 import { fetchData } from './utils.js';
 
 // 마이페이지 수정정보 조회
-const fetchAndDisplayUser = () => {
-  fetchData('/api/userInfo', { method: "GET" }).then((data) => {
+const myPageInfo = () => {
+  fetchData('/api/userInfo', { method: 'GET' }).then((data) => {
     const userInformation = document.querySelector('#my-page-edit-form');
     userInformation.innerHTML = '';
     const { email, profilepicture, nickname, birth, gender, address, introduce, password } = data.result;
@@ -71,10 +71,9 @@ const fetchAndDisplayUser = () => {
   });
 };
 
-window.onload = fetchAndDisplayUser;
+window.onload = myPageInfo;
 
 document.addEventListener('click', async (event) => {
-
   // 마이페이지 회원정보 수정하기
   if (event.target.matches('#edit-submit')) {
     console.log('찍는중');
@@ -115,10 +114,8 @@ document.addEventListener('click', async (event) => {
         const { errorMessage } = data;
         alert(errorMessage);
       }
-
     } catch (error) {
       alert('수정에 실패했습니다. 다시 시도해주세요.');
     }
   }
-
 });

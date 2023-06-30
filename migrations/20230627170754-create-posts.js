@@ -10,14 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       thumbnail: {
         type: Sequelize.STRING,
       },
       content: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
