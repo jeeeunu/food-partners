@@ -70,7 +70,7 @@ if (btnSignInSubmit !== null) {
         const token = data.token;
         console.log(`${token}, 로그인 성공"`);
         alert('로그인 되었습니다.');
-        window.location.href = '/';
+        window.location.href = '/html/my-page.html';
       } else {
         const { errorMessage } = data;
         alert(errorMessage);
