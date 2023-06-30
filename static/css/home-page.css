@@ -144,7 +144,7 @@ img:hover {
 }
 
 .create-post-content {
-  width: 800px;
+  /* width: 800px;
   min-height: 150px;
   height: auto;
 
@@ -154,13 +154,9 @@ img:hover {
   border: 1px solid #ddd;
   border-radius: 10px;
 
-  font-size: 14px;
+  font-size: 14px; */
 }
 
-.create-post-content textarea {
-  width: 90%;
-  height: 120px;
-}
 
 .create-post-btn {
   width: 800px;

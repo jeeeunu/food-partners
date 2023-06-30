@@ -33,7 +33,7 @@
     </header>
     <!-- main -->
     <main>
-      <div class="create-post-box">
+      <div class="create-post-box basic-inner">
         <div class="create-post-img">
           <img src="https://via.placeholder.com/400x400.jpg" alt="임시 이미지" />
         </div>
@@ -41,13 +41,13 @@
           <label for="create-post-img" class="basic-btn">파일 업로드
           <input id="create-post-img" type="file" style="display: none;"/>
         </div>
-        <div class="create-post-title">
-          <label for="">제목 : </label>
-          <input id="create-post-title" type="text" placeholder="제목" />
+        <div class="input-wrap">
+          <label for="">제목</label>
+          <input type="text" id="create-post-title" placeholder="제목" required />
         </div>
-        <div class="create-post-content">
+        <div class="input-wrap create-post-content">
           <label for="">내용 : </label>
-          <textarea id="create-post-content" type="text" placeholder="내용"></textarea>
+          <textarea type="text" id="create-post-content" placeholder="내용"></textarea>
         </div>
         <div class="create-post-btn">
           <button id="create-post-submit" class="basic-btn">게시하기</button>

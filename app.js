@@ -7,7 +7,7 @@ const port = 3018;
 const loginRouter = require('./routes/login.js');
 const signRouter = require('./routes/sign.js');
 const logoutRouter = require('./routes/logout.js');
-const postsRouter = require('./routes/posts.router.js');
+const postsRouter = require('./routes/post.js');
 const userRouter = require('./routes/users_route.js');
 
 app.use(express.json());

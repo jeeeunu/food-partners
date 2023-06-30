@@ -9,12 +9,12 @@ if (btnPostSubmit !== null) {
     console.log(postImgFile, postTitle, postContent);
 
     const formData = new FormData();
-    formData.append('postImg', postImgFile);
-    formData.append('postTitle', postTitle);
-    formData.append('postContent', postContent);
+    formData.append('profilePicture', postImgFile);
+    formData.append('title', postTitle);
+    formData.append('content', postContent);
 
     try {
-      const response = await fetch('/api', {
+      const response = await fetch('/api/posts', {
         method: 'POST',
         body: formData,
       });
@@ -25,7 +25,7 @@ if (btnPostSubmit !== null) {
 
       const data = await response.json();
       alert('게시글을 작성하였습니다.');
-      window.location.href = '/html/index.html';
+      window.location.href = '/';
     } catch (error) {
       alert('게시글 작성에 실패하였습니다.');
     }
@@ -36,11 +36,9 @@ if (btnPostSubmit !== null) {
 getPosts();
 async function getPosts() {
   try {
-    const response = await fetch('/api', {
+    const response = await fetch('/api/posts', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {},
     });
     const data = await response.json();
     if (response.ok) {
@@ -60,14 +58,14 @@ async function getPosts() {
 // 내 게시물 조회
 
 // 게시글 삭제
-const btnPostDelete = document.querySelector('#detail-page-delete');
+// const btnPostDelete = document.querySelector('#detail-page-delete');
 
-const fetchData = { data: 'fetch에서 받은 데이터' };
+// const fetchData = { data: 'fetch에서 받은 데이터' };
 
-fetch('/api/posts', {
-  method: 'POST',
-  body: fetchData,
-});
+// fetch('/api/posts', {
+//   method: 'POST',
+//   body: fetchData,
+// });
 
 // 카드 생성
 const createCards = (posts) => {
@@ -81,7 +79,7 @@ const createCards = (posts) => {
                 ${postImg}
               </ul>
               <ul>
-                ${postTitle}
+                ${title}
               </ul>
               <ul>
                 ${postContent}
