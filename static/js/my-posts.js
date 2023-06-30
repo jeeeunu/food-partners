@@ -6,7 +6,7 @@ const myPosts = () => {
     const { data } = response;
     const thumbnail = data;
     console.log(thumbnail);
-    const postList = document.querySelector('.card-container');
+    const postList = document.querySelector('.card-list');
     postList.innerHTML = '';
 
     data.forEach((content) => {

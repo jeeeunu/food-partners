@@ -3,10 +3,6 @@ main {
   margin: 50px auto;
 }
 
-h2 {
-  margin-bottom: 70px;
-}
-
 h2::before {
   content: '';
 }
