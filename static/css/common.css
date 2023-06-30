@@ -2,6 +2,10 @@
   display: none;
 }
 
+body {
+  min-width: 1150px;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -13,6 +17,13 @@ header {
   align-items: center;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 1150px;
+  margin: 0 auto;
 }
 
 header .title-box {
@@ -70,15 +81,11 @@ header a span {
 
 .left-btn-box {
   min-width: 25%;
-  padding: 30px;
 }
 
 .right-btn-box {
   min-width: 25%;
-
   justify-content: right;
-
-  padding: 30px;
 }
 
 /* 푸터 */
@@ -205,4 +212,41 @@ textarea {
   width: 100%;
   height: 55px;
   margin-top: 30px;
+}
+.card-item {
+  max-width: 100%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.card-item a {
+  display: block;
+  width: 100%;
+}
+
+.card-item .img-wrap {
+  width: 100%;
+  height: 300px;
+}
+
+.card-item .text-wrap {
+  width: 300px;
+  height: 95px;
+  padding: 0 20px;
+}
+
+.card-item .text-wrap strong {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 말줄임 적용 */
+}
+
+.card-item .text-wrap p {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }

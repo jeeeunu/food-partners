@@ -53,6 +53,24 @@ router.get('/posts', async (req, res) => {
   return res.status(200).json({ data: posts });
 });
 
+// 내가 작성한 글 API
+router.get('/myPost', authMiddleware, async (req, res) => {
+  const userid = res.locals.user.userid;
+  const posts = await Posts.findAll({
+    attributes: ['title', 'thumbnail', 'content', 'createdAt'],
+    include: [
+      {
+        model: Users,
+        where: {
+          userid: userid,
+        },
+      },
+    ],
+    order: [['createdAt', 'DESC']],
+  });
+  return res.status(200).json({ data: posts });
+});
+
 router.get('/posts/:postId', async (req, res) => {
   const { postId } = req.params;
   const post = await Posts.findOne({

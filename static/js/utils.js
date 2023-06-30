@@ -1,16 +1,14 @@
-function fetchData(url, options) {
-  return fetch(url, options)
-    .then((response) => {
-      if (!response.ok) {
-        return response.json().then((data) => {
-          throw new Error(data.errorMessage);
-        });
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+async function fetchData(url, options) {
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.errorMessage);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export { fetchData };

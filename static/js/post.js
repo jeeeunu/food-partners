@@ -31,7 +31,6 @@ if (btnPostSubmit !== null) {
 }
 
 // 게시물 조회
-getPosts();
 async function getPosts() {
   try {
     const response = await fetch('/api/posts', {
@@ -45,6 +44,7 @@ async function getPosts() {
       const cardList = document.querySelector('#card-list');
       cardList.innerHTML = ''; // 카드 담는 리스트 비우기
       // 데이터 map 돌려서 html 템플릿 담음
+
       const htmlArray = posts.map((post) => {
         const { img: postImg, title: title, content: content } = post; // 프로퍼티 확인 필요
         return `<ol class="card">
@@ -68,6 +68,9 @@ async function getPosts() {
     console.error(error);
   }
 }
+
+getPosts();
+
 // 게시글 삭제
 // const btnPostDelete = document.querySelector('#detail-page-delete');
 

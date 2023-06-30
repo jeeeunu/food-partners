@@ -46,6 +46,7 @@ figure {
   border: 0;
   outline: none;
   box-sizing: border-box;
+  list-style: none;
 }
 
 input,
@@ -147,18 +148,18 @@ select::-ms-expand {
   display: none;
 }
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-input[type="search"] {
+input[type='search'] {
   -webkit-appearance: textfield;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
-input[type=text]::-ms-clear {
+input[type='text']::-ms-clear {
   display: none;
 }
 
@@ -170,7 +171,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -183,7 +184,7 @@ input::-moz-focus-inner {
 textarea {
   overflow: auto;
   vertical-align: top;
-  resize: none
+  resize: none;
 }
 
 address {
@@ -191,12 +192,12 @@ address {
 }
 
 /* 아이폰 input style 초기화 */
-input[type="text"],
-input[type="tel"],
-input[type="button"],
-input[type="password"],
-input[type="email"],
-input[type="search"],
+input[type='text'],
+input[type='tel'],
+input[type='button'],
+input[type='password'],
+input[type='email'],
+input[type='search'],
 textarea,
 button {
   -webkit-appearance: none;
