@@ -6,6 +6,8 @@ if (btnPostSubmit !== null) {
     const postTitle = document.querySelector('#create-post-title').value;
     const postContent = document.querySelector('#create-post-content').value;
 
+    console.log(postImgFile, postTitle, postContent);
+
     const formData = new FormData();
     formData.append('postImg', postImgFile);
     formData.append('postTitle', postTitle);
@@ -29,16 +31,6 @@ if (btnPostSubmit !== null) {
     }
   });
 }
-
-// 게시글 삭제
-const btnPostDelete = document.querySelector('#detail-page-delete');
-
-const fetchData = { data: 'fetch에서 받은 데이터' };
-
-fetch('/api/posts', {
-  method: 'POST',
-  body: fetchData,
-});
 
 // 게시물 조회
 getPosts();
@@ -64,6 +56,18 @@ async function getPosts() {
     console.error(error);
   }
 }
+
+// 내 게시물 조회
+
+// 게시글 삭제
+const btnPostDelete = document.querySelector('#detail-page-delete');
+
+const fetchData = { data: 'fetch에서 받은 데이터' };
+
+fetch('/api/posts', {
+  method: 'POST',
+  body: fetchData,
+});
 
 // 카드 생성
 const createCards = (posts) => {

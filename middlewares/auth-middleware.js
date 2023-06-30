@@ -13,8 +13,8 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const { userId } = jwt.verify(authToken, 'customized-secret-key');
-    const user = await Users.findOne({ where: { userId } });
+    const { userid } = jwt.verify(authToken, 'customized-secret-key');
+    const user = await Users.findOne({ where: { userid } });
     res.locals.user = user;
     next();
   } catch (err) {
