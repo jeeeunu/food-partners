@@ -16,6 +16,7 @@ router.post('/posts', authMiddleware, upload, async (req, res) => {
     thumbnail = path.join('img-server', req.file.filename);
   }
   const UserId = res.locals.user.userid;
+
   if (!title) {
     res.status(400).json({
       errorMessage: '제목을 작성해주세요.',
