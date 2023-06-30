@@ -234,13 +234,15 @@ textarea {
 .card-item a {
   display: block;
   width: 100%;
-  padding: 0 20px;
+  padding: 30px 20px 10px;
 }
 
 .card-item .img-wrap {
   width: 100%;
   height: 250px;
   margin-bottom: 30px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .card-item .text-wrap {
@@ -260,4 +262,12 @@ textarea {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* 말줄임 적용 */
+}
+
+.profile-img-wrap {
+  width: 100%;
+  height: 100%;
+}
+.profile-img-wrap img {
+  object-fit: cover;
 }
