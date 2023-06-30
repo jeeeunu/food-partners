@@ -1,7 +1,7 @@
 import { fetchData } from './utils.js';
 
 // 마이페이지 회원정보 조회
-const fetchAndDisplayUser = () => {
+const myPageInfo = () => {
   fetchData('/api/userInfo', { method: 'GET' }).then((data) => {
     const userInformation = document.querySelector('#my-page-form');
     userInformation.innerHTML = '';
@@ -63,7 +63,7 @@ const fetchAndDisplayUser = () => {
   });
 };
 
-window.onload = fetchAndDisplayUser;
+window.onload = myPageInfo;
 
 // 로그아웃
 document.addEventListener('click', async (event) => {
