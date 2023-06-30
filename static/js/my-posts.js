@@ -2,7 +2,7 @@ import { fetchData } from './utils.js';
 
 //  내 작성글 조회
 const myPosts = () => {
-  fetchData('/api/posts', { method: 'GET' }).then((data) => {
+  fetchData('/api/myPost', { method: 'GET' }).then((data) => {
     const postList = document.querySelector('#default_post_img');
     postList.innerHTML = '';
     const { title, createdAt, updatedAt } = data.result;
@@ -32,3 +32,5 @@ const myPosts = () => {
     cardList.innerHTML = htmlArray.join(''); // 데이터 담은 htmlArray를 문자열로 합쳐서 card-list에 넣음
   });
 };
+
+myPosts();
