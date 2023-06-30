@@ -63,6 +63,11 @@ header a span {
   white-space: nowrap;
 }
 
+.basic-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .left-btn-box {
   min-width: 25%;
   padding: 30px;
@@ -99,4 +104,105 @@ small {
 .center-inner {
   max-width: 450px;
   margin: 0 auto 70px;
+}
+
+.input-box {
+  display: flex;
+}
+
+.input-box .input-wrap {
+  width: 70%;
+}
+
+.input-box .input-wrap input {
+  width: 197px;
+}
+
+.input-box .btn-primary {
+  width: 20%;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  min-width: 310px;
+  margin-top: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.input-wrap:first-child {
+  margin-top: 0;
+}
+
+.input-wrap input {
+  flex: 1;
+}
+
+.input-wrap label {
+  flex-shrink: 0;
+  width: 155px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.input-wrap input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+input:read-only {
+  border: none;
+}
+
+textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.create-post-content textarea {
+  width: 90%;
+  height: 120px;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: 500;
+  border-radius: 10px;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #04b4ae;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  color: #04b4ae;
+  border: 1px solid #04b4ae;
+  background-color: #fff;
+}
+
+.btn-primary.border {
+  color: #04b4ae;
+  border: 1px solid #04b4ae;
+  background-color: #fff;
+}
+
+.btn-primary.border.red {
+  color: rgb(223, 75, 75);
+  border-color: rgb(223, 75, 75);
+}
+
+.btn-full {
+  width: 100%;
+  height: 55px;
+  margin-top: 30px;
 }

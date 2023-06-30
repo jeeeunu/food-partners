@@ -2,30 +2,52 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const authMiddleware = require('../middlewares/auth-middleware.js');
 const { Posts } = require('../models');
+const { Users } = require('../models');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
 
-router.post('/', upload, async (req, res) => {
-  const { title, thumbnail, content } = req.body;
+// POST
+router.post('/', authMiddleware, upload, async (req, res) => {
+  const { title, content } = req.body;
+  const userid = res.locals.user.userid;
+  let profilepicture = req.file;
+
+  if (profilepicture) {
+    profilepicture = path.join('img-server', req.file.filename);
+  }
+
   const post = await Posts.create({
-    postId: postId,
+    userid: userid,
     title: title,
-    thumbnail: thumbnail,
+    thumbnail: profilepicture,
     content: content,
     createdAt: Date(),
     updatedAt: Date(),
   });
+
   res.status(201).json({ data: post });
 });
 
+// GET
 router.get('/', async (req, res) => {
   const posts = await Posts.findAll({
-    attributes: ['postId', 'title', 'createdAt', 'updatedAt'],
+    attributes: ['title', 'createdAt', 'updatedAt'],
     order: [['createdAt', 'DESC']],
   });
 
   return res.status(200).json({ data: posts });
+});
+
+// GET : myPost
+router.get('/myPost', authMiddleware, async (req, res) => {
+  const userid = res.locals.user.userid;
+
+  const post = await Posts.findOne({
+    attributes: ['email', 'password', 'profilepicture', 'nickname', 'birth', 'gender', 'address', 'introduce', 'updatedAt'],
+    where: { userid },
+  });
 });
 
 router.get('/:postId', async (req, res) => {

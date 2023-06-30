@@ -16,6 +16,7 @@ router.get('/userInfo', authMiddleware, async (req, res) => {
   return res.status(200).json({ result: user });
 });
 
+// PUT
 router.put('/userInfo', authMiddleware, upload, async (req, res) => {
   const { nickname, password, confirm, birth, gender, address, introduce } = req.body;
   let profilepicture = req.file;
@@ -82,6 +83,7 @@ router.put('/userInfo', authMiddleware, upload, async (req, res) => {
   }
 });
 
+// DELETE
 router.delete('/userInfo', authMiddleware, async (req, res) => {
   const userid = res.locals.user.userid;
   const existsUser = await Users.findOne({ where: { userid } });

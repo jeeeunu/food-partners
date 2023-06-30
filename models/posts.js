@@ -13,8 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Posts.init({
-    postId: DataTypes.STRING,
+  Posts.init({ 
+    userId: DataTypes.INTEGER,
+    postId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     thumbnail: DataTypes.STRING,
     content: DataTypes.STRING,
