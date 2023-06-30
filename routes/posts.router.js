@@ -59,7 +59,7 @@ router.get('/posts', async (req, res) => {
 router.get('/myPost', authMiddleware, async (req, res) => {
   const userid = res.locals.user.userid;
   const posts = await Posts.findAll({
-    attributes: ['title', 'thumbnail', 'content', 'createdAt'],
+    attributes: ['postId', 'title', 'thumbnail', 'content', 'createdAt'],
     include: [
       {
         model: Users,
