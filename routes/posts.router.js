@@ -43,7 +43,7 @@ router.post('/posts', authMiddleware, upload, async (req, res) => {
 
 router.get('/posts', async (req, res) => {
   const posts = await Posts.findAll({
-    attributes: ['title', 'thumbnail', 'content', 'createdAt'],
+    attributes: ['postId', 'title', 'thumbnail', 'content', 'createdAt'],
     include: [
       {
         model: Users,
@@ -73,13 +73,31 @@ router.get('/myPost', authMiddleware, async (req, res) => {
   return res.status(200).json({ data: posts });
 });
 
+// 이거!!!!
 router.get('/posts/:postId', async (req, res) => {
-  const { postId } = req.params;
-  const post = await Posts.findOne({
-    attributes: ['title', 'thumbnail', 'content', 'createdAt', 'updatedAt'],
-    where: { postId: postId },
-  });
-  return res.status(200).json({ data: post });
+  try {
+    const postId = req.params.postId;
+    const post = await Posts.findOne({
+      where: { postId: postId },
+      include: [
+        {
+          model: Users,
+          attributes: ['nickname'],
+        },
+      ],
+    });
+
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+
+    const nickname = post.User ? post.User.nickname : 'Unknown User';
+
+    return res.render('detail-post-page', { post: post, nickname: nickname });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Internal Server Error');
+  }
 });
 
 router.delete('/posts/:postId', authMiddleware, async (req, res) => {

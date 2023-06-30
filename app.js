@@ -17,6 +17,7 @@ app.use('/api', [loginRouter, signRouter, logoutRouter, userRouter, postsRouter]
 app.use(express.static('./static'));
 // 이미지 파일
 app.use('/img-server', express.static(path.join(__dirname, 'img-server')));
+app.set('view engine', 'ejs');
 
 app.listen(port, () => {
   console.log(port, '포트로 서버가 열렸어요!');

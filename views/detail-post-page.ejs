@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodPartners</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kablammo&display=swap" rel="stylesheet" />
+    <!-- css -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/home-page.css" />
+    <!-- js -->
+    <script type="module" src="/js/common.js"></script>
+    <!-- <script type="module" src="/js/post.js" defer></script> -->
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header-inner">
+        <div class="left-btn-box">
+          <a href="/">홈</a>
+        </div>
+        <div class="title-box">
+          <h3>Food Partners</h3>
+        </div>
+        <div class="right-btn-box">
+          <a href="create-post.html" class="basic-btn">작성</a>
+          <a href="sign-in.html" class="basic-btn">로그인</a>
+        </div>
+      </div>
+    </header>
+    <!-- main -->
+    <main>
+      <div class="detail-page-box">
+        <div class="detail-page-img-box">
+          <div class="detail-page-img"> <% let profileImage = ''; %> <% if (post.thumbnail) { %> <% profileImage = `<img src="/img-server/${post.thumbnail.replace(/\\/g, '/').replace('img-server/', '')}" alt="프로필 이미지" />`; %> <% } else { %> <% profileImage = `<img src="../images/default_post_img.png" alt="기본 프로필 이미지" style="display: block; width: 40%; object-fit: contain; margin: 0 auto" />`; %> <% } %> <%- profileImage %> </div>
+
+          <div class="detail-page-title">
+            <h1><%= post.title %></h1>
+            <p><%= post.User.nickname %></p>
+            <p><%= new Date(post.createdAt).toLocaleString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+            <p><%= post.content %></p>
+          </div>
+        </div>
+        <div class="detail-page-content">
+          <!-- <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere consequat dolor. Sed eros est, viverra sit amet ultricies a, laoreet vel ex. Duis semper varius dignissim. Quisque et mauris massa. Ut congue ac justo in tempus. Nulla et eros tincidunt, pellentesque nunc ac, pretium enim. Integer eu augue quis nisl aliquet volutpat. Aliquam cursus, velit tempus egestas dictum, enim dolor mattis odio, eu faucibus diam quam nec lectus. Aenean orci purus, elementum a mauris sed,
+            finibus molestie eros. Ut ac accumsan dolor. Aenean aliquet vitae est at rhoncus. Praesent consequat egestas fringilla. Duis lectus est, pellentesque at efficitur ac, blandit nec ante. Maecenas turpis turpis, consequat posuere nulla nec, tristique sollicitudin arcu.
+          </p> -->
+        </div>
+        <div class="detail-page-btn-box">
+          <a href="../static/html/create-post-page.html" id="detail-page-update" class="basic-btn">게시글 수정</a>
+          <button id="detail-page-delete" class="basic-btn">게시글 삭제</button>
+        </div>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer>
+      <div class="footer-left-box"></div>
+      <div class="footer-right-box">copyright@ 맥주와 육포</div>
+    </footer>
+  </body>
+</html>
