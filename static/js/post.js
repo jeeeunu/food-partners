@@ -70,13 +70,3 @@ async function getPosts() {
 }
 
 getPosts();
-
-// 게시글 삭제
-// const btnPostDelete = document.querySelector('#detail-page-delete');
-
-// const fetchData = { data: 'fetch에서 받은 데이터' };
-
-// fetch('/api/posts', {
-//   method: 'POST',
-//   body: fetchData,
-// });

@@ -93,7 +93,7 @@ router.get('/posts/:postId', async (req, res) => {
 
     const nickname = post.User ? post.User.nickname : 'Unknown User';
 
-    return res.render('detail-post-page', { post: post, nickname: nickname });
+    return res.render('detail-post-page', { post: post });
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal Server Error');

@@ -27,6 +27,7 @@ async function getPosts() {
               </ul>
             </ol>`;
       });
+
       cardList.innerHTML = htmlArray.join(''); // 데이터 담은 htmlArray를 문자열로 합쳐서 card-list에 넣음
     } else {
       const errorMessage = data.message;
