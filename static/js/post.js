@@ -94,3 +94,5 @@ async function postDelete(postId) {
     }
   }
 }
+
+exports.renderFunc = postDelete();
