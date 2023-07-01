@@ -14,8 +14,8 @@ async function getPosts() {
       // 데이터 map 돌려서 html 템플릿 담음
 
       const htmlArray = posts.map((post) => {
-        const { img: postImg, title: title, content: content, postId: postId } = post; // 프로퍼티 확인 필요
-        return `<ol class="card" id="postId" value=${postId}>
+        const { img: postImg, title: title, content: content } = post; // 프로퍼티 확인 필요
+        return `<ol class="card">
               <ul>
                 ${postImg}
               </ul>
