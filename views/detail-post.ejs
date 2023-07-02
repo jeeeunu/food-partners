@@ -76,7 +76,7 @@
               const data = await response.json();
               if (response.ok) {
                 alert('삭제처리 되었습니다 감사합니다.');
-                window.location.href = '/';
+                window.location.href = '/html/my-posts.html';
               } else {
                 const { errorMessage } = data;
                 alert(errorMessage);
