@@ -9,7 +9,6 @@ if (document.cookie.includes('Authorization')) {
     document.querySelector('.right-btn-box').innerHTML = `
       <a href="/html/create-post-page.html">글 작성</a>
       <a href="/html/my-page.html" class="btn-my-page">마이페이지</a>
-      <a href="/html/admin-panel.html">관리자 패널</a>
     `;
   } else {
     document.querySelector('.right-btn-box').innerHTML = `
@@ -26,7 +25,6 @@ if (document.cookie.includes('Authorization')) {
   } else if (location.pathname.startsWith('/api')) {
     document.querySelector('.right-btn-box').innerHTML = `
       <a href="/html/sign-in.html" class="btn-login">로그인</a>
-      <a href="/html/admin-login.html" class="btn-admin-login">관리자 로그인</a>
     `;
   } else {
     document.querySelector('.right-btn-box').innerHTML = `
