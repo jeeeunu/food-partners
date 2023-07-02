@@ -115,10 +115,7 @@ main {
 .create-post-img-box {
   width: 400px;
   height: 400px;
-
   margin: auto;
-
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .img-upload-btn {

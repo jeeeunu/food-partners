@@ -167,7 +167,7 @@ small {
 
 .input-wrap input {
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 10px;
 }
@@ -256,7 +256,7 @@ textarea {
 
 .card-item .text-wrap strong {
   margin-bottom: 7px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .card-item .text-wrap strong,
@@ -266,6 +266,7 @@ textarea {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* 말줄임 적용 */
+  font-size: 16px;
 }
 
 .profile-img-wrap {

@@ -121,20 +121,18 @@ router.delete('/posts/:postId', authMiddleware, async (req, res) => {
 router.get('/posts/edit/:postId', async (req, res) => {
   try {
     const postId = req.params.postId;
-    // 게시글을 조회하거나 필요한 데이터를 가져오는 코드 추가
-
-    // 예를 들어, 게시글 데이터를 조회하고 해당 데이터를 템플릿에 전달한다고 가정
     const post = await Posts.findOne({
-      attributes: ['title', 'content'],
+      attributes: ['title', 'content', 'thumbnail'],
       where: { postId: postId },
-      // 필요한 include 등의 옵션 추가
     });
 
     if (!post) {
       return res.status(404).send('Post not found');
     }
 
-    return res.render('detail-edit', { post: post });
+    const thumbnail = post.thumbnail;
+
+    return res.render('detail-edit', { post: post, thumbnail: thumbnail });
   } catch (error) {
     console.error(error);
     return res.status(400).send('게시글 수정 페이지를 불러오는 것을 실패했습니다.');
