@@ -3,6 +3,7 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
 const { Posts } = require('../models');
 const { Op } = require('sequelize');
+const jwt = require('jsonwebtoken');
 const upload = require('../middlewares/uploadFile.js');
 const fs = require('fs');
 const { Users } = require('../models');
@@ -75,6 +76,11 @@ router.get('/myPost', authMiddleware, async (req, res) => {
 
 // GET: 게시글 상세
 router.get('/posts/:postId', async (req, res) => {
+  const { Authorization } = req.cookies;
+  const [authType, authToken] = (Authorization ?? '').split(' ');
+  const { userid } = jwt.verify(authToken, 'customized-secret-key');
+  const user = await Users.findOne({ where: { userid } });
+
   try {
     const postId = req.params.postId;
     const post = await Posts.findOne({
@@ -92,8 +98,10 @@ router.get('/posts/:postId', async (req, res) => {
     }
 
     const nickname = post.User ? post.User.nickname : '유저를 찾을 수 없습니다.';
+    const isUser = user && user.userid === post.UserId;
+    console.log(isUser);
 
-    return res.render('detail-post', { post: post, postId: postId });
+    return res.render('detail-post', { post: post, postId: postId, isUser: isUser });
   } catch (error) {
     console.error(error);
     return res.status(400).send('게시글 조회에 실패했습니다.');

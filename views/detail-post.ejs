@@ -48,8 +48,10 @@
           <p><%= post.content %></p>
         </div>
         <div class="detail-page-btn-box">
+          <% if (isUser) { %>
           <a href="<%= `/api/posts/edit/${postId}` %>" id="detail-page-update" class="btn-primary border">게시글 수정</a>
           <button id="detail-page-delete" class="btn-primary border red" onclick="postDelete()">게시글 삭제</button>
+          <% } %>
         </div>
       </div>
     </main>

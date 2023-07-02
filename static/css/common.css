@@ -279,8 +279,8 @@ textarea {
 }
 
 .post-date {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 20px;
+  font-size: 13px !important;
   color: #888;
   text-align: right;
 }
