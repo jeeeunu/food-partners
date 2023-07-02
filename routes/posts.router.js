@@ -77,9 +77,17 @@ router.get('/myPost', authMiddleware, async (req, res) => {
 // GET: 게시글 상세
 router.get('/posts/:postId', async (req, res) => {
   const { Authorization } = req.cookies;
-  const [authType, authToken] = (Authorization ?? '').split(' ');
-  const { userid } = jwt.verify(authToken, 'customized-secret-key');
-  const user = await Users.findOne({ where: { userid } });
+
+  let user;
+  if (Authorization) {
+    const [authType, authToken] = Authorization.split(' ');
+    try {
+      const { userid } = jwt.verify(authToken, 'customized-secret-key');
+      user = await Users.findOne({ where: { userid } });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   try {
     const postId = req.params.postId;
@@ -99,7 +107,6 @@ router.get('/posts/:postId', async (req, res) => {
 
     const nickname = post.User ? post.User.nickname : '유저를 찾을 수 없습니다.';
     const isUser = user && user.userid === post.UserId;
-    console.log(isUser);
 
     return res.render('detail-post', { post: post, postId: postId, isUser: isUser });
   } catch (error) {
