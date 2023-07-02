@@ -39,7 +39,7 @@
           <div class="create-post-img-box">
             <div class="profile-img-wrap detail-page-img">
               <% if (thumbnail) { %>
-                <img src="<%= thumbnail.replace(/\\/g, '/') %>" alt="기존 이미지">
+                <img src="/<%= thumbnail.replace(/\\/g, '/') %>" alt="기존 이미지">
               <% } else { %>
                 <img src="/images/default_post_img.png" style="display: block; width: 40%; object-fit: contain; margin: 0 auto" alt="기존 이미지">
               <% } %>
