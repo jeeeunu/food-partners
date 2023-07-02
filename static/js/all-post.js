@@ -17,6 +17,12 @@ const myPosts = () => {
       } else {
         profileImage = `<img src="../images/default_post_img.png" alt="기본 프로필 이미지" style="display: block; width: 40%; object-fit: contain; margin: 0 auto">`;
       }
+
+      // 날짜
+      const postCreatedAt = new Date(content.createdAt);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formatDate = postCreatedAt.toLocaleString('ko-KR', options);
+
       const contentHtml = `
         <div class="card-item">
           <a href="api/posts/${content.postId}">
@@ -26,6 +32,7 @@ const myPosts = () => {
             <div class="text-wrap">
               <strong>${content.title}</strong>
               <p>${content.content}</p>
+              <p class="post-date">${formatDate}</p>
             </div>
           </a>
         </div>
