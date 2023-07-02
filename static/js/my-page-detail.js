@@ -22,7 +22,7 @@ const myPageInfo = () => {
     } else if (gender === 'F') {
       genderData = `👩‍🦰 여자 `;
     }
-    
+
     userInformation.innerHTML = `
       <h2>"${nickname}" <small>님의 마이 페이지</small></h2>
       <div class="center-inner">
