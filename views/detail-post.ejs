@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/home-page.css" />
     <!-- js -->
     <script type="module" src="/js/common.js"></script>
-    <!-- <script type="module" src="/js/post.js" defer></script> -->
   </head>
 
   <body>
@@ -49,8 +48,8 @@
           <p><%= post.content %></p>
         </div>
         <div class="detail-page-btn-box">
-          <a href="../static/html/create-post-page.html" id="detail-page-update" class="basic-btn">게시글 수정</a>
-          <button id="detail-page-delete" class="basic-btn" onclick="postDelete()">게시글 삭제</button>
+          <a href="<%= `/api/posts/edit/${postId}` %>" id="detail-page-update" class="btn-primary border">게시글 수정</a>
+          <button id="detail-page-delete" class="btn-primary border red" onclick="postDelete()">게시글 삭제</button>
         </div>
       </div>
     </main>

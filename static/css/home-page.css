@@ -18,7 +18,7 @@ main {
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.151);
 
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 
   transition: all 0.3s;
@@ -48,10 +48,6 @@ main {
   border-radius: 10px;
 }
 
-img:hover {
-  cursor: pointer;
-}
-
 /* 게시글 상세 페이지 */
 .detail-page-box {
   margin: 0 30px;
@@ -60,16 +56,17 @@ img:hover {
 .detail-page-img-box {
   width: 800px;
   height: 400px;
-
   display: flex;
-  margin: auto;
+  margin: 0 auto 50px auto;
 }
 
 .detail-page-img {
   width: 400px;
   height: 400px;
-
-  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.001);
+  overflow: hidden;
 }
 
 .detail-page-title {
@@ -91,9 +88,8 @@ img:hover {
 
 .detail-page-content {
   width: 800px;
-
   margin: auto;
-  padding: 20px;
+  font-size: 16px;
 }
 
 .detail-page-content p {

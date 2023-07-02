@@ -37,5 +37,4 @@ async function getPosts() {
     console.error(error);
   }
 }
-
 getPosts();

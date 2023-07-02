@@ -178,7 +178,7 @@ input:read-only {
 
 textarea {
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 10px;
 }
@@ -192,7 +192,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 15px;
   font-weight: 500;
   border-radius: 10px;
   color: #fff;
@@ -230,7 +230,7 @@ textarea {
 }
 .card-item {
   width: 30%;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   background-color: #fff;
@@ -280,6 +280,6 @@ textarea {
 .post-date {
   margin-top: 10px;
   font-size: 14px;
-  color: #666;
+  color: #888;
   text-align: right;
 }

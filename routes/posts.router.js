@@ -73,7 +73,7 @@ router.get('/myPost', authMiddleware, async (req, res) => {
   return res.status(200).json({ data: posts });
 });
 
-// 이거!!!!
+// GET: 게시글 상세
 router.get('/posts/:postId', async (req, res) => {
   try {
     const postId = req.params.postId;
@@ -88,15 +88,15 @@ router.get('/posts/:postId', async (req, res) => {
     });
 
     if (!post) {
-      return res.status(404).send('Post not found');
+      return res.status(404).send('해당하는 게시글을 찾을 수 없습니다.');
     }
 
-    const nickname = post.User ? post.User.nickname : 'Unknown User';
+    const nickname = post.User ? post.User.nickname : '유저를 찾을 수 없습니다.';
 
-    return res.render('detail-post-page', { post: post });
+    return res.render('detail-post', { post: post, postId: postId });
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(400).send('게시글 조회에 실패했습니다.');
   }
 });
 
@@ -117,6 +117,31 @@ router.delete('/posts/:postId', authMiddleware, async (req, res) => {
   return res.status(200).json({ data: '게시글이 삭제되었습니다.' });
 });
 
+// 게시글 수정 페이지 render하기
+router.get('/posts/edit/:postId', async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    // 게시글을 조회하거나 필요한 데이터를 가져오는 코드 추가
+
+    // 예를 들어, 게시글 데이터를 조회하고 해당 데이터를 템플릿에 전달한다고 가정
+    const post = await Posts.findOne({
+      attributes: ['title', 'content'],
+      where: { postId: postId },
+      // 필요한 include 등의 옵션 추가
+    });
+
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+
+    return res.render('detail-edit', { post: post });
+  } catch (error) {
+    console.error(error);
+    return res.status(400).send('게시글 수정 페이지를 불러오는 것을 실패했습니다.');
+  }
+});
+
+// PUT: 게시글 수정
 router.put('/posts/:postId', authMiddleware, upload, async (req, res) => {
   const { postId } = req.params;
   const { title, content } = req.body;
