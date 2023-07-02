@@ -27,7 +27,7 @@ document.querySelector('#btn-edit-submit').addEventListener('click', async () =>
 
     if (response.ok) {
       alert('수정되었습니다');
-      window.location.href = '/';
+      window.location.href = `/api/posts/${lastPart}`;
     } else {
       const { errorMessage } = data;
       alert(errorMessage);
