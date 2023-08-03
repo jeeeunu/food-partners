@@ -1,9 +1,10 @@
 # Food-Partners
-node/express/mysql/sequelize <br>
+node/express/mysql/sequelize
+<br>
 
 ## 개발 기간
-
 23.06.26 ~ 23.06.30
+<br>
 
 ## 관련문서
 api 명세서: https://amused-aerosteon-bef.notion.site/API-4d2032c8c3b746b6981d01a3c509d8e7?pvs=4 
